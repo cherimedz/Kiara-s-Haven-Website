@@ -1,0 +1,26 @@
+{
+    "homeCarouselItems": [
+        {
+            "title": "Welcome to Our Website",
+            "content": "Explore our latest offerings and services."
+        },
+        {
+            "title": "Discover Our Team",
+            "content": "Meet the dedicated individuals behind our success."
+        },
+        {
+            "title": "Join Our Community",
+            "content": "Become a part of our growing family."
+        }
+    ],
+    "sponsorCarouselItems": [
+        {
+            "title": "Our Generous Sponsors",
+            "content": "Learn about the companies that support our initiatives."
+        },
+        {
+            "title": "Partner With Us",
+            "content": "Explore collaboration opportunities with our organization."
+        }
+    ]
+}
