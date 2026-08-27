@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+:root {
+  --kh-bg: #fdf6ee;
+  --kh-card: #ffffff;
+  --kh-text: #2b2118;
+  --kh-muted: #7a6a5a;
+  --kh-border: #ece0d1;
+  --kh-accent: #c4794f;
+
+  --kh-simba-from: #e5a663;
+  --kh-simba-to: #d9e88a;
+  --kh-sebastian-from: #e79aa4;
+  --kh-sebastian-to: #f7cac9;
+  --kh-coco-from: #6f9a6f;
+  --kh-coco-to: #b8dfa0;
+  --kh-princess-from: #fd8451;
+  --kh-princess-to: #ffbd6f;
+}
+
+@theme inline {
+  --color-bg: var(--kh-bg);
+  --color-card: var(--kh-card);
+  --color-ink: var(--kh-text);
+  --color-mute: var(--kh-muted);
+  --color-line: var(--kh-border);
+  --color-accent: var(--kh-accent);
+
+  --color-simba-from: var(--kh-simba-from);
+  --color-simba-to: var(--kh-simba-to);
+  --color-sebastian-from: var(--kh-sebastian-from);
+  --color-sebastian-to: var(--kh-sebastian-to);
+  --color-coco-from: var(--kh-coco-from);
+  --color-coco-to: var(--kh-coco-to);
+  --color-princess-from: var(--kh-princess-from);
+  --color-princess-to: var(--kh-princess-to);
+
+  --font-heading: var(--font-fraunces), serif;
+  --font-sans: var(--font-montserrat), system-ui, sans-serif;
+  --font-accent: var(--font-dm-serif), serif;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
