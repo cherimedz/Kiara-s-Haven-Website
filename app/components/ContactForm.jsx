@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Send } from "lucide-react";
 import Button from "./ui/Button";
 
 export default function ContactForm() {
@@ -13,7 +14,7 @@ export default function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="rounded-2xl border border-line bg-bg p-8 text-center">
+      <div className="rounded-2xl border border-line bg-card p-8 text-center">
         <p className="font-[family-name:var(--font-heading)] text-xl mb-2">
           Thanks for reaching out!
         </p>
@@ -26,45 +27,32 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-2xl border border-line bg-bg p-8 space-y-4">
-      <div>
-        <label htmlFor="name" className="block text-sm font-medium mb-1">
-          Your Name
-        </label>
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="grid sm:grid-cols-2 gap-4">
         <input
-          id="name"
           type="text"
           required
-          placeholder="Enter your name"
-          className="w-full rounded-lg border border-line bg-card px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent"
+          placeholder="Your name"
+          aria-label="Your name"
+          className="w-full rounded-lg border border-line bg-card px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent"
         />
-      </div>
-      <div>
-        <label htmlFor="email" className="block text-sm font-medium mb-1">
-          Your Email
-        </label>
         <input
-          id="email"
           type="email"
           required
-          placeholder="Enter your email"
-          className="w-full rounded-lg border border-line bg-card px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent"
+          placeholder="Email address"
+          aria-label="Email address"
+          className="w-full rounded-lg border border-line bg-card px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent"
         />
       </div>
-      <div>
-        <label htmlFor="message" className="block text-sm font-medium mb-1">
-          Your Message
-        </label>
-        <textarea
-          id="message"
-          rows={4}
-          required
-          placeholder="Enter your message"
-          className="w-full rounded-lg border border-line bg-card px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent"
-        />
-      </div>
+      <textarea
+        rows={4}
+        required
+        placeholder="Your message"
+        aria-label="Your message"
+        className="w-full rounded-lg border border-line bg-card px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent"
+      />
       <Button type="submit" variant="primary">
-        Send Message
+        Send Message <Send size={16} className="ml-2" />
       </Button>
     </form>
   );

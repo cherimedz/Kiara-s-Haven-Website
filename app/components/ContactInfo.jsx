@@ -1,20 +1,15 @@
-import { MapPin, Mail, Heart } from "lucide-react";
+import { Heart } from "lucide-react";
 
 export default function ContactInfo() {
   return (
-    <div className="rounded-2xl bg-gradient-to-br from-accent to-[#e0a978] text-white p-8 space-y-4">
-      <h3 className="font-[family-name:var(--font-heading)] text-xl font-semibold mb-2">
-        Get in Touch
-      </h3>
-      <p className="flex items-center gap-3 text-sm">
-        <MapPin size={18} /> A fictional address, for a fictional haven
+    <div className="flex flex-col justify-center h-full text-right">
+      <p className="font-[family-name:var(--font-heading)] italic text-xl text-ink leading-relaxed mb-4">
+        &quot;Until one has loved an animal, a part of one&apos;s soul remains
+        unawakened.&quot;
       </p>
-      <p className="flex items-center gap-3 text-sm">
-        <Mail size={18} /> hello@kiarashaven.example
-      </p>
-      <p className="flex items-center gap-3 text-sm pt-2 border-t border-white/20 mt-4">
-        <Heart size={18} /> Built as a portfolio demo project
-      </p>
+      <div className="flex justify-end">
+        <Heart className="text-accent" size={20} />
+      </div>
     </div>
   );
 }
