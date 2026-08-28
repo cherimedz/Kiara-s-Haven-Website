@@ -8,16 +8,19 @@ project, not a real organization.
 
 The original (2024) was a single Bootstrap page with hotlinked stock photos,
 inflated placeholder stats, and four "Many Faces" sub-org links that pointed
-to pages that never existed. It's preserved as-is in [`legacy/`](./legacy).
+to pages that never existed. It lives in this repo's git history if you want
+to compare.
 
 This rebuild:
 - Is a real multi-page **Next.js 16 / React 19 / Tailwind 4** app, plain JS/JSX.
 - Implements the four sub-org pages (Simba's, Sebastian's, Coco's, Princess's
   Haven) that the original only linked to.
 - Drops the hotlinked stock images and inflated fake statistics in favor of
-  honest, clearly-illustrative content and a CSS-gradient-driven design system.
+  honest content and hand-coded SVG illustrations.
 - Replaces ~10 near-duplicate `.btn-*` CSS classes with a single themeable
   `Button` component.
+- Runs on a two-font editorial type system — **Fraunces** for emotion,
+  **Manrope** for information.
 
 ## The name
 
