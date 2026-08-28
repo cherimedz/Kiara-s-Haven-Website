@@ -1,37 +1,156 @@
-const pets = {
-  kiara: { species: "cat", face: "#e3a06b", ear: "#c1592f", frame: "var(--kh-accent)" },
-  simba: { species: "dog", face: "#e0b96a", ear: "#a97a2e", frame: "var(--kh-simba-from)" },
-  sebastian: { species: "dog", face: "#f2ebe0", ear: "#d9c8b4", frame: "var(--kh-sebastian-from)" },
-  coco: { species: "cat", face: "#3a2a20", ear: "#2a1d16", frame: "var(--kh-coco-from)", markings: "#f2ebe0" },
-  princess: { species: "cat", face: "#e7b98a", ear: "#d99a63", frame: "var(--kh-princess-from)" },
-};
+/* Each pet is drawn individually — front-facing, shoulders-up, inside an arch frame. */
 
-function CatFace({ face, ear, markings }) {
+function Eyes({ y = 56, dx = 11, color = "#2E241C", cx = 50 }) {
   return (
     <g>
-      <path d="M22 30 L30 10 L38 28 Z" fill={ear} />
-      <path d="M58 30 L50 10 L42 28 Z" fill={ear} />
-      <ellipse cx="40" cy="46" rx="24" ry="22" fill={face} />
-      {markings && <path d="M40 24 C48 26 54 34 54 46 C54 54 48 60 40 61 Z" fill={markings} opacity="0.9" />}
-      <circle cx="32" cy="44" r="2.6" fill="#241a12" />
-      <circle cx="48" cy="44" r="2.6" fill="#241a12" />
-      <path d="M40 50 l-2.5 3h5Z" fill="#241a12" />
-      <path d="M40 54 q-4 3 -8 1.5 M40 54 q4 3 8 1.5" stroke="#241a12" strokeWidth="1.2" fill="none" strokeLinecap="round" />
+      <ellipse cx={cx - dx} cy={y} rx="4.2" ry="4.6" fill={color} />
+      <ellipse cx={cx + dx} cy={y} rx="4.2" ry="4.6" fill={color} />
+      <circle cx={cx - dx + 1.5} cy={y - 1.6} r="1.3" fill="#fff" opacity="0.9" />
+      <circle cx={cx + dx + 1.5} cy={y - 1.6} r="1.3" fill="#fff" opacity="0.9" />
     </g>
   );
 }
 
-function DogFace({ face, ear }) {
+function Whiskers({ y = 70 }) {
+  return (
+    <g stroke="#2E241C" strokeWidth="0.7" opacity="0.35" strokeLinecap="round">
+      <path d={`M38 ${y} L24 ${y - 3}`} />
+      <path d={`M38 ${y + 2.5} L24 ${y + 3}`} />
+      <path d={`M62 ${y} L76 ${y - 3}`} />
+      <path d={`M62 ${y + 2.5} L76 ${y + 3}`} />
+    </g>
+  );
+}
+
+function Kiara() {
   return (
     <g>
-      <path d="M18 28 C14 40 16 52 24 56 L26 34 Z" fill={ear} />
-      <path d="M62 28 C66 40 64 52 56 56 L54 34 Z" fill={ear} />
-      <ellipse cx="40" cy="48" rx="23" ry="21" fill={face} />
-      <ellipse cx="40" cy="56" rx="10" ry="8" fill={face} opacity="0.85" />
-      <circle cx="33" cy="44" r="2.6" fill="#241a12" />
-      <circle cx="47" cy="44" r="2.6" fill="#241a12" />
-      <ellipse cx="40" cy="54" rx="3.4" ry="2.6" fill="#241a12" />
-      <path d="M40 57 q-4 3 -7 1 M40 57 q4 3 7 1" stroke="#241a12" strokeWidth="1.2" fill="none" strokeLinecap="round" />
+      <path d="M22 68 C22 96 30 118 50 118 C70 118 78 96 78 68Z" fill="#9C7A52" />
+      <path d="M40 92 C40 108 44 118 50 118 C56 118 60 108 60 92Z" fill="#E4D3B8" />
+      <path d="M26 46 L28 20 L45 34Z" fill="#9C7A52" />
+      <path d="M74 46 L72 20 L55 34Z" fill="#9C7A52" />
+      <path d="M31 41 L32 27 L42 36Z" fill="#D9A9A0" />
+      <path d="M69 41 L68 27 L58 36Z" fill="#D9A9A0" />
+      <ellipse cx="50" cy="58" rx="28" ry="26" fill="#A8825A" />
+      <g fill="#6E5335" opacity="0.55">
+        <path d="M50 32 L47 44 L53 44Z" />
+        <path d="M40 34 L39 45 L44 43Z" />
+        <path d="M60 34 L61 45 L56 43Z" />
+      </g>
+      <ellipse cx="50" cy="70" rx="13" ry="10" fill="#E4D3B8" />
+      <Eyes y={56} dx={11} />
+      <path d="M50 66 l-3 3.4h6Z" fill="#C4756B" />
+      <path d="M50 70 q-4.5 4 -8.5 1.4 M50 70 q4.5 4 8.5 1.4" stroke="#2E241C" strokeWidth="1.1" fill="none" strokeLinecap="round" />
+      <Whiskers y={70} />
+    </g>
+  );
+}
+
+function Simba() {
+  return (
+    <g>
+      <path d="M24 72 C24 98 32 118 50 118 C68 118 76 98 76 72Z" fill="#D6A96E" />
+      <path d="M41 94 C41 108 45 118 50 118 C55 118 59 108 59 94Z" fill="#EFDCBC" />
+      <path d="M22 44 C13 52 12 76 20 88 C26 94 30 88 30 76Z" fill="#B5854A" />
+      <path d="M78 44 C87 52 88 76 80 88 C74 94 70 88 70 76Z" fill="#B5854A" />
+      <ellipse cx="50" cy="56" rx="27" ry="25" fill="#DDB47A" />
+      <path d="M50 30 C44 34 42 40 43 46 L57 46 C58 40 56 34 50 30Z" fill="#EFDCBC" opacity="0.55" />
+      <ellipse cx="50" cy="72" rx="14" ry="11" fill="#EFDCBC" />
+      <Eyes y={55} dx={11} />
+      <ellipse cx="50" cy="67" rx="4.4" ry="3.4" fill="#2E241C" />
+      <path d="M50 71 v3.5" stroke="#2E241C" strokeWidth="1.1" strokeLinecap="round" />
+      <path d="M50 74.5 q-5 4 -9 0.5 M50 74.5 q5 4 9 0.5" stroke="#2E241C" strokeWidth="1.1" fill="none" strokeLinecap="round" />
+    </g>
+  );
+}
+
+function Sebastian() {
+  return (
+    <g>
+      <path d="M22 74 C22 100 30 118 50 118 C70 118 78 100 78 74Z" fill="#F3EADC" />
+      <g fill="#F7F1E6">
+        <circle cx="26" cy="52" r="13" />
+        <circle cx="74" cy="52" r="13" />
+        <circle cx="22" cy="68" r="11" />
+        <circle cx="78" cy="68" r="11" />
+        <circle cx="30" cy="34" r="11" />
+        <circle cx="70" cy="34" r="11" />
+        <circle cx="50" cy="28" r="12" />
+      </g>
+      <ellipse cx="50" cy="56" rx="26" ry="24" fill="#FBF6EC" />
+      <g fill="#E6DACA" opacity="0.7">
+        <circle cx="28" cy="46" r="7" />
+        <circle cx="72" cy="46" r="7" />
+        <circle cx="26" cy="62" r="6" />
+        <circle cx="74" cy="62" r="6" />
+      </g>
+      <ellipse cx="50" cy="70" rx="13" ry="10" fill="#FFFDF8" />
+      <Eyes y={56} dx={10.5} />
+      <ellipse cx="50" cy="66" rx="4" ry="3.2" fill="#2E241C" />
+      <path d="M50 70 q-4.5 3.6 -8 0.6 M50 70 q4.5 3.6 8 0.6" stroke="#2E241C" strokeWidth="1.1" fill="none" strokeLinecap="round" />
+    </g>
+  );
+}
+
+function Coco() {
+  return (
+    <g>
+      <path d="M22 68 C22 96 30 118 50 118 C70 118 78 96 78 68Z" fill="#2E2723" />
+      <path d="M39 90 C38 106 43 118 50 118 C57 118 62 106 61 90Z" fill="#F4EFE4" />
+      <path d="M26 46 L28 20 L45 34Z" fill="#2E2723" />
+      <path d="M74 46 L72 20 L55 34Z" fill="#2E2723" />
+      <path d="M31 41 L32 28 L42 36Z" fill="#B98D86" />
+      <path d="M69 41 L68 28 L58 36Z" fill="#B98D86" />
+      <ellipse cx="50" cy="58" rx="28" ry="26" fill="#332C27" />
+      <path d="M50 34 C43 44 41 56 43 66 C46 74 54 74 57 66 C59 56 57 44 50 34Z" fill="#F4EFE4" />
+      <ellipse cx="50" cy="70" rx="12.5" ry="9.5" fill="#F4EFE4" />
+      <Eyes y={56} dx={11} color="#1C1714" />
+      <path d="M50 66 l-3 3.2h6Z" fill="#C48078" />
+      <path d="M50 69.5 q-4.5 4 -8.5 1.4 M50 69.5 q4.5 4 8.5 1.4" stroke="#1C1714" strokeWidth="1.1" fill="none" strokeLinecap="round" />
+      <Whiskers y={70} />
+    </g>
+  );
+}
+
+function Princess() {
+  return (
+    <g>
+      <path d="M22 68 C22 96 30 118 50 118 C70 118 78 96 78 68Z" fill="#E2BC93" />
+      <path d="M40 92 C40 108 44 118 50 118 C56 118 60 108 60 92Z" fill="#F6EBDA" />
+      <path d="M26 46 L28 20 L45 34Z" fill="#E2BC93" />
+      <path d="M74 46 L72 20 L55 34Z" fill="#E2BC93" />
+      <path d="M31 41 L32 27 L42 36Z" fill="#E5AFA6" />
+      <path d="M69 41 L68 27 L58 36Z" fill="#E5AFA6" />
+      <ellipse cx="50" cy="58" rx="28" ry="26" fill="#EDCBA4" />
+      <g fill="#D2A171" opacity="0.5">
+        <path d="M50 32 L47 43 L53 43Z" />
+        <path d="M40 34 L39 44 L44 42Z" />
+        <path d="M60 34 L61 44 L56 42Z" />
+      </g>
+      <ellipse cx="50" cy="70" rx="13" ry="10" fill="#F9F0E2" />
+      <Eyes y={56} dx={11} />
+      <path d="M50 66 l-3 3.4h6Z" fill="#CE8279" />
+      <path d="M50 70 q-4.5 4 -8.5 1.4 M50 70 q4.5 4 8.5 1.4" stroke="#2E241C" strokeWidth="1.1" fill="none" strokeLinecap="round" />
+      <Whiskers y={70} />
+    </g>
+  );
+}
+
+const pets = {
+  kiara: { Art: Kiara, bg: "#F6E3D6", sprig: "#C1592F" },
+  simba: { Art: Simba, bg: "#F5E7C4", sprig: "#B5854A" },
+  sebastian: { Art: Sebastian, bg: "#F7DDDD", sprig: "#C98F94" },
+  coco: { Art: Coco, bg: "#DFEAD6", sprig: "#6F9A6F" },
+  princess: { Art: Princess, bg: "#FADCC6", sprig: "#E8875C" },
+};
+
+function Sprigs({ color }) {
+  return (
+    <g stroke={color} strokeWidth="1.1" fill="none" strokeLinecap="round" opacity="0.75">
+      <path d="M18 108 C24 104 30 106 34 112" />
+      <path d="M22 106 c-1 -3 0 -5 2 -6 M28 107 c0 -3 1 -5 4 -6" />
+      <path d="M82 108 C76 104 70 106 66 112" />
+      <path d="M78 106 c1 -3 0 -5 -2 -6 M72 107 c0 -3 -1 -5 -4 -6" />
     </g>
   );
 }
@@ -39,16 +158,35 @@ function DogFace({ face, ear }) {
 export default function PetPortrait({ pet }) {
   const config = pets[pet];
   if (!config) return null;
+  const { Art, bg, sprig } = config;
 
   return (
-    <svg viewBox="0 0 80 96" width="100%" height="100%" role="img" aria-label={`Illustrated portrait of ${pet}`}>
-      <ellipse cx="40" cy="48" rx="38" ry="46" fill={config.frame} opacity="0.18" />
-      <ellipse cx="40" cy="48" rx="32" ry="40" fill={config.frame} opacity="0.12" />
-      {config.species === "cat" ? (
-        <CatFace face={config.face} ear={config.ear} markings={config.markings} />
-      ) : (
-        <DogFace face={config.face} ear={config.ear} />
-      )}
+    <svg
+      viewBox="0 0 100 120"
+      width="100%"
+      height="100%"
+      role="img"
+      aria-label={`Illustrated portrait of ${pet}`}
+    >
+      <defs>
+        <clipPath id={`arch-${pet}`}>
+          <path d="M8 120 V50 A42 42 0 0 1 92 50 V120 Z" />
+        </clipPath>
+      </defs>
+      <path d="M8 120 V50 A42 42 0 0 1 92 50 V120 Z" fill={bg} />
+      <g clipPath={`url(#arch-${pet})`}>
+        <g transform="translate(7.5 20) scale(0.85)">
+          <Art />
+        </g>
+      </g>
+      <path
+        d="M8 120 V50 A42 42 0 0 1 92 50 V120"
+        fill="none"
+        stroke={sprig}
+        strokeWidth="1.2"
+        opacity="0.35"
+      />
+      <Sprigs color={sprig} />
     </svg>
   );
 }
