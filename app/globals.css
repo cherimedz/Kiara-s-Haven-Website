@@ -48,12 +48,20 @@
   --color-tint-rose: var(--kh-tint-rose);
   --color-tint-ochre: var(--kh-tint-ochre);
 
-  --font-heading: var(--font-fraunces), serif;
-  --font-sans: var(--font-montserrat), system-ui, sans-serif;
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-body: var(--font-manrope), system-ui, sans-serif;
 }
 
 body {
   background: var(--color-bg);
   color: var(--color-ink);
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Fraunces carries the emotion; keep its optical sizing soft rather than formal. */
+.font-display {
+  font-variation-settings: "SOFT" 40, "WONK" 1;
 }
