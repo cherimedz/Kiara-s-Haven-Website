@@ -2,14 +2,18 @@ import { Heart } from "lucide-react";
 
 export default function ContactInfo() {
   return (
-    <div className="flex flex-col justify-center h-full text-right">
-      <p className="font-[family-name:var(--font-heading)] italic text-xl text-ink leading-relaxed mb-4">
-        &quot;Until one has loved an animal, a part of one&apos;s soul remains
-        unawakened.&quot;
+    <div className="relative pl-8">
+      <span
+        aria-hidden="true"
+        className="absolute left-0 -top-4 font-display text-6xl leading-none text-accent/35 select-none"
+      >
+        &ldquo;
+      </span>
+      <p className="font-display italic font-normal text-ink text-[19px] md:text-[21px] leading-[1.55] tracking-[-0.015em]">
+        Until one has loved an animal, a part of one&apos;s soul remains
+        unawakened.
       </p>
-      <div className="flex justify-end">
-        <Heart className="text-accent" size={20} />
-      </div>
+      <Heart className="text-accent mt-4" size={18} />
     </div>
   );
 }

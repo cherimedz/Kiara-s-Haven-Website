@@ -15,10 +15,10 @@ export default function ContactForm() {
   if (submitted) {
     return (
       <div className="rounded-2xl border border-line bg-card p-8 text-center">
-        <p className="font-[family-name:var(--font-heading)] text-xl mb-2">
+        <p className="font-display text-[22px] tracking-[-0.02em] mb-2">
           Thanks for reaching out!
         </p>
-        <p className="text-mute">
+        <p className="text-[15px] leading-[1.65] text-mute">
           This is a demo form — nothing was actually sent, but on a real site
           this is where your message would go.
         </p>
@@ -52,7 +52,7 @@ export default function ContactForm() {
         className="w-full rounded-lg border border-line bg-card px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent"
       />
       <Button type="submit" variant="primary">
-        Send Message <Send size={16} className="ml-2" />
+        Send message <Send size={16} className="ml-2" />
       </Button>
     </form>
   );
