@@ -1,23 +1,17 @@
-import { Fraunces, Montserrat, DM_Serif_Display } from "next/font/google";
+import { Fraunces, Montserrat } from "next/font/google";
 import "./globals.css";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
 });
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-});
-
-const dmSerif = DM_Serif_Display({
-  variable: "--font-dm-serif",
-  subsets: ["latin"],
-  weight: ["400"],
-  style: ["normal", "italic"],
 });
 
 export const metadata = {
@@ -28,7 +22,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${montserrat.variable} ${dmSerif.variable}`}>
+    <html lang="en" className={`${fraunces.variable} ${montserrat.variable}`}>
       <body>{children}</body>
     </html>
   );

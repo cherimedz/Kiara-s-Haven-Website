@@ -1,21 +1,28 @@
 @import "tailwindcss";
 
 :root {
-  --kh-bg: #fdf6ee;
+  --kh-bg: #fbf3ea;
   --kh-card: #ffffff;
-  --kh-text: #2b2118;
-  --kh-muted: #7a6a5a;
-  --kh-border: #ece0d1;
-  --kh-accent: #c4794f;
+  --kh-text: #3a2a20;
+  --kh-muted: #6b5847;
+  --kh-border: #ecdfcd;
+  --kh-accent: #c1592f;
+  --kh-accent-dark: #a44a25;
 
-  --kh-simba-from: #e5a663;
-  --kh-simba-to: #d9e88a;
-  --kh-sebastian-from: #e79aa4;
-  --kh-sebastian-to: #f7cac9;
+  --kh-simba-from: #cf9a2e;
+  --kh-simba-to: #e8d98a;
+  --kh-sebastian-from: #d98c93;
+  --kh-sebastian-to: #f2c9cc;
   --kh-coco-from: #6f9a6f;
   --kh-coco-to: #b8dfa0;
-  --kh-princess-from: #fd8451;
-  --kh-princess-to: #ffbd6f;
+  --kh-princess-from: #e8875c;
+  --kh-princess-to: #f7c08a;
+
+  /* pastel tints for the wayfinder cards — light washes of the accents above */
+  --kh-tint-terracotta: #fbe3d6;
+  --kh-tint-sage: #e4efdd;
+  --kh-tint-rose: #f8e3e2;
+  --kh-tint-ochre: #f7ecd3;
 }
 
 @theme inline {
@@ -25,6 +32,7 @@
   --color-mute: var(--kh-muted);
   --color-line: var(--kh-border);
   --color-accent: var(--kh-accent);
+  --color-accent-dark: var(--kh-accent-dark);
 
   --color-simba-from: var(--kh-simba-from);
   --color-simba-to: var(--kh-simba-to);
@@ -35,9 +43,13 @@
   --color-princess-from: var(--kh-princess-from);
   --color-princess-to: var(--kh-princess-to);
 
+  --color-tint-terracotta: var(--kh-tint-terracotta);
+  --color-tint-sage: var(--kh-tint-sage);
+  --color-tint-rose: var(--kh-tint-rose);
+  --color-tint-ochre: var(--kh-tint-ochre);
+
   --font-heading: var(--font-fraunces), serif;
   --font-sans: var(--font-montserrat), system-ui, sans-serif;
-  --font-accent: var(--font-dm-serif), serif;
 }
 
 body {
