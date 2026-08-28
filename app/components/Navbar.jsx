@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Heart } from "lucide-react";
 import Button from "./ui/Button";
 
 const navLinks = [
@@ -16,18 +16,20 @@ const navLinks = [
 
 function LogoMark() {
   return (
-    <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
+    <svg viewBox="0 0 44 44" width="40" height="40" aria-hidden="true">
       <path
-        d="M16 4 L28 15 V28 H4 V15 Z"
+        d="M6 19 L22 5 L38 19 V38 H6 Z"
         fill="none"
         stroke="var(--kh-accent)"
         strokeWidth="1.8"
         strokeLinejoin="round"
       />
-      <circle cx="12" cy="20" r="1.4" fill="var(--kh-accent)" />
-      <circle cx="20" cy="20" r="1.4" fill="var(--kh-accent)" />
-      <circle cx="16" cy="17" r="1.4" fill="var(--kh-accent)" />
-      <path d="M12.5 24c0-2 1.5-3.5 3.5-3.5s3.5 1.5 3.5 3.5" fill="none" stroke="var(--kh-accent)" strokeWidth="1.4" strokeLinecap="round" />
+      <g fill="var(--kh-accent)">
+        <ellipse cx="16.5" cy="23.5" rx="2" ry="2.7" />
+        <ellipse cx="22" cy="22" rx="2" ry="2.7" />
+        <ellipse cx="27.5" cy="23.5" rx="2" ry="2.7" />
+        <path d="M22 26.5 c-4.2 0 -6.6 2.7 -6.6 5.2 c0 2.2 2.2 3.2 6.6 3.2 s6.6 -1 6.6 -3.2 c0 -2.5 -2.4 -5.2 -6.6 -5.2Z" />
+      </g>
     </svg>
   );
 }
@@ -38,12 +40,16 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 bg-bg/95 backdrop-blur border-b border-line">
       <nav className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-        <Link href="/" className="flex items-center gap-2 font-[family-name:var(--font-heading)] text-lg font-semibold text-ink">
+        <Link href="/" className="flex items-center gap-2.5 text-ink">
           <LogoMark />
-          Kiara&apos;s Haven
+          <span className="font-display font-medium text-[19px] leading-[1.1] tracking-[-0.02em]">
+            Kiara&apos;s
+            <br />
+            Haven
+          </span>
         </Link>
 
-        <ul className="hidden lg:flex items-center gap-7 text-sm font-medium text-ink">
+        <ul className="hidden lg:flex items-center gap-7 text-sm font-medium tracking-[-0.01em] text-ink">
           {navLinks.map((link) => (
             <li key={link.label}>
               <Link href={link.href} className="hover:text-accent transition-colors">
@@ -55,7 +61,7 @@ export default function Navbar() {
 
         <div className="hidden lg:block">
           <Button href="/#contact" size="sm">
-            Donate
+            <Heart size={15} className="mr-2" /> Donate
           </Button>
         </div>
 
@@ -69,7 +75,7 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <ul className="lg:hidden flex flex-col gap-1 px-6 pb-4 text-sm font-medium text-ink">
+        <ul className="lg:hidden flex flex-col gap-1 px-6 pb-4 text-sm font-medium tracking-[-0.01em] text-ink">
           {navLinks.map((link) => (
             <li key={link.label}>
               <Link

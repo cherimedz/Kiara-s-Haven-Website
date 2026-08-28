@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import Eyebrow from "./ui/Eyebrow";
 import LeafDivider from "./illustrations/LeafDivider";
 import {
   AdoptIcon,
@@ -16,6 +17,7 @@ const actions = [
     Icon: AdoptIcon,
     tint: "bg-tint-terracotta",
     dot: "bg-accent",
+    ink: "text-accent",
   },
   {
     label: "Volunteer",
@@ -23,6 +25,7 @@ const actions = [
     Icon: VolunteerIcon,
     tint: "bg-tint-sage",
     dot: "bg-coco-from",
+    ink: "text-coco-from",
   },
   {
     label: "Donate",
@@ -30,6 +33,7 @@ const actions = [
     Icon: DonateIcon,
     tint: "bg-tint-rose",
     dot: "bg-sebastian-from",
+    ink: "text-sebastian-from",
   },
   {
     label: "Sponsor",
@@ -37,6 +41,7 @@ const actions = [
     Icon: SponsorIcon,
     tint: "bg-tint-ochre",
     dot: "bg-simba-from",
+    ink: "text-simba-from",
   },
   {
     label: "Impact",
@@ -44,6 +49,7 @@ const actions = [
     Icon: ImpactIcon,
     tint: "bg-tint-sage",
     dot: "bg-coco-from",
+    ink: "text-coco-from",
   },
   {
     label: "Join Our Family",
@@ -51,32 +57,34 @@ const actions = [
     Icon: FamilyIcon,
     tint: "bg-tint-terracotta",
     dot: "bg-princess-from",
+    ink: "text-princess-from",
   },
 ];
 
 export default function Wayfinder() {
   return (
-    <section id="wayfinder" className="px-6 py-16">
+    <section id="wayfinder" className="bg-card px-6 pb-16">
       <div className="max-w-6xl mx-auto">
-        <div className="flex justify-center mb-4 text-accent">
+        <div className="flex justify-center mb-3 text-simba-from">
           <LeafDivider />
         </div>
-        <p className="text-center uppercase tracking-[0.2em] text-sm text-accent font-medium mb-10">
-          What Would You Like to Do?
-        </p>
+        <Eyebrow className="text-center mb-10">What would you like to do?</Eyebrow>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {actions.map(({ label, desc, Icon, tint, dot }) => (
-            <div key={label} className={`rounded-2xl p-6 ${tint}`}>
-              <Icon className="text-ink mb-4" />
-              <h3 className="font-[family-name:var(--font-heading)] text-lg font-semibold text-ink mb-1">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+          {actions.map(({ label, desc, Icon, tint, dot, ink }) => (
+            <div
+              key={label}
+              className={`rounded-2xl px-4 py-6 text-center flex flex-col items-center ${tint}`}
+            >
+              <Icon className={`${ink} mb-4`} />
+              <h3 className="font-display font-medium text-ink text-[19px] leading-[1.1] tracking-[-0.02em] mb-2">
                 {label}
               </h3>
-              <p className="text-sm text-mute mb-5">{desc}</p>
+              <p className="text-[13px] text-mute leading-[1.6] mb-5 flex-1">{desc}</p>
               <span
-                className={`inline-flex items-center justify-center w-9 h-9 rounded-full text-white ${dot}`}
+                className={`inline-flex items-center justify-center w-8 h-8 rounded-full text-white ${dot}`}
               >
-                <ArrowRight size={16} />
+                <ArrowRight size={14} />
               </span>
             </div>
           ))}
