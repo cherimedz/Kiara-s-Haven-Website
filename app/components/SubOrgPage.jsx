@@ -17,7 +17,7 @@ export default function SubOrgPage({ org }) {
       <section className="max-w-3xl mx-auto px-6 py-16">
         <p className="text-mute text-lg leading-relaxed mb-10">{org.mission}</p>
 
-        <h2 className="font-[family-name:var(--font-heading)] text-2xl font-semibold mb-4">
+        <h2 className="font-display font-medium text-[26px] leading-[1.1] tracking-[-0.025em] mb-4">
           What We Focus On
         </h2>
         <ul className="space-y-3 mb-10">
