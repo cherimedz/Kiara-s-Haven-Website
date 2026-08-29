@@ -15,7 +15,7 @@ export default function Home() {
       <Hero />
       <Wayfinder />
       <OurStory />
-      <WaveDivider fill="var(--kh-bg)" />
+      <WaveDivider fill="var(--kh-page)" />
       <HavenSpread />
       <PromiseStrip />
       <ContactSection />
