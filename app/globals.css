@@ -1,59 +1,104 @@
 @import "tailwindcss";
 
 :root {
-  --kh-bg: #fbf3ea;
-  --kh-card: #ffffff;
-  --kh-text: #3a2a20;
-  --kh-muted: #6b5847;
-  --kh-border: #ecdfcd;
-  --kh-accent: #c1592f;
-  --kh-accent-dark: #a44a25;
+  /* ---- Surfaces (level 0 → 2; level 3 is haven-specific) ---- */
+  --kh-page: #fdf7ef;
+  --kh-surface: #fffdf9;
+  --kh-linen: #f5ebdd;
 
-  --kh-simba-from: #cf9a2e;
-  --kh-simba-to: #e8d98a;
-  --kh-sebastian-from: #d98c93;
-  --kh-sebastian-to: #f2c9cc;
-  --kh-coco-from: #6f9a6f;
-  --kh-coco-to: #b8dfa0;
-  --kh-princess-from: #e8875c;
-  --kh-princess-to: #f7c08a;
+  /* ---- Ink hierarchy ---- */
+  --kh-ink: #2b211a;
+  --kh-ink-warm: #4a382c;
+  --kh-ink-muted: #75665a;
+  --kh-ink-subtle: #9a897a;
 
-  /* pastel tints for the wayfinder cards — light washes of the accents above */
-  --kh-tint-terracotta: #fbe3d6;
-  --kh-tint-sage: #e4efdd;
-  --kh-tint-rose: #f8e3e2;
-  --kh-tint-ochre: #f7ecd3;
+  --kh-line: #e5d7c8;
+
+  /* ---- Brand: terracotta. Used sparingly — scarcity keeps it meaningful. ---- */
+  --kh-brand: #b96546;
+  --kh-brand-dark: #934b35;
+  --kh-brand-soft: #e9c9b8;
+
+  /* ---- Havens: chapters of the same book ---- */
+  --kh-simba-primary: #68734a;
+  --kh-simba-secondary: #8b934e;
+  --kh-simba-highlight: #c99a4a;
+  --kh-simba-soft: #efe2c3;
+  --kh-simba-wash: #e7e5cc;
+  --kh-simba-deep: #39402a;
+
+  --kh-sebastian-primary: #b9827e;
+  --kh-sebastian-secondary: #d6aaa1;
+  --kh-sebastian-highlight: #ebd5cc;
+  --kh-sebastian-soft: #f5e7dc;
+  --kh-sebastian-wash: #ebd5cc;
+  --kh-sebastian-deep: #58403d;
+
+  --kh-coco-primary: #78866a;
+  --kh-coco-secondary: #9ba88a;
+  --kh-coco-highlight: #657257;
+  --kh-coco-soft: #dee3d4;
+  --kh-coco-wash: #f1ebdd;
+  --kh-coco-deep: #3d4938;
+
+  --kh-princess-primary: #d98268;
+  --kh-princess-secondary: #eca88e;
+  --kh-princess-highlight: #f3c39d;
+  --kh-princess-soft: #f7ddd0;
+  --kh-princess-wash: #f3c39d;
+  --kh-princess-deep: #70463c;
 }
 
 @theme inline {
-  --color-bg: var(--kh-bg);
-  --color-card: var(--kh-card);
-  --color-ink: var(--kh-text);
-  --color-mute: var(--kh-muted);
-  --color-line: var(--kh-border);
-  --color-accent: var(--kh-accent);
-  --color-accent-dark: var(--kh-accent-dark);
+  --color-page: var(--kh-page);
+  --color-surface: var(--kh-surface);
+  --color-linen: var(--kh-linen);
 
-  --color-simba-from: var(--kh-simba-from);
-  --color-simba-to: var(--kh-simba-to);
-  --color-sebastian-from: var(--kh-sebastian-from);
-  --color-sebastian-to: var(--kh-sebastian-to);
-  --color-coco-from: var(--kh-coco-from);
-  --color-coco-to: var(--kh-coco-to);
-  --color-princess-from: var(--kh-princess-from);
-  --color-princess-to: var(--kh-princess-to);
+  --color-ink: var(--kh-ink);
+  --color-warm: var(--kh-ink-warm);
+  --color-mute: var(--kh-ink-muted);
+  --color-subtle: var(--kh-ink-subtle);
 
-  --color-tint-terracotta: var(--kh-tint-terracotta);
-  --color-tint-sage: var(--kh-tint-sage);
-  --color-tint-rose: var(--kh-tint-rose);
-  --color-tint-ochre: var(--kh-tint-ochre);
+  --color-line: var(--kh-line);
+
+  --color-brand: var(--kh-brand);
+  --color-brand-dark: var(--kh-brand-dark);
+  --color-brand-soft: var(--kh-brand-soft);
+
+  --color-simba-primary: var(--kh-simba-primary);
+  --color-simba-secondary: var(--kh-simba-secondary);
+  --color-simba-highlight: var(--kh-simba-highlight);
+  --color-simba-soft: var(--kh-simba-soft);
+  --color-simba-wash: var(--kh-simba-wash);
+  --color-simba-deep: var(--kh-simba-deep);
+
+  --color-sebastian-primary: var(--kh-sebastian-primary);
+  --color-sebastian-secondary: var(--kh-sebastian-secondary);
+  --color-sebastian-highlight: var(--kh-sebastian-highlight);
+  --color-sebastian-soft: var(--kh-sebastian-soft);
+  --color-sebastian-wash: var(--kh-sebastian-wash);
+  --color-sebastian-deep: var(--kh-sebastian-deep);
+
+  --color-coco-primary: var(--kh-coco-primary);
+  --color-coco-secondary: var(--kh-coco-secondary);
+  --color-coco-highlight: var(--kh-coco-highlight);
+  --color-coco-soft: var(--kh-coco-soft);
+  --color-coco-wash: var(--kh-coco-wash);
+  --color-coco-deep: var(--kh-coco-deep);
+
+  --color-princess-primary: var(--kh-princess-primary);
+  --color-princess-secondary: var(--kh-princess-secondary);
+  --color-princess-highlight: var(--kh-princess-highlight);
+  --color-princess-soft: var(--kh-princess-soft);
+  --color-princess-wash: var(--kh-princess-wash);
+  --color-princess-deep: var(--kh-princess-deep);
 
   --font-display: var(--font-fraunces), Georgia, serif;
   --font-body: var(--font-manrope), system-ui, sans-serif;
 }
 
 body {
-  background: var(--color-bg);
+  background: var(--color-page);
   color: var(--color-ink);
   font-family: var(--font-body);
   font-size: 1rem;
