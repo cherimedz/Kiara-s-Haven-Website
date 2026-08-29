@@ -10,7 +10,7 @@ export default function SectionHeading({ eyebrow, title, subtitle, align = "cent
       )}
     >
       {eyebrow && (
-        <p className="font-semibold text-[11px] uppercase tracking-[0.16em] text-accent mb-3">
+        <p className="font-semibold text-[11px] uppercase tracking-[0.16em] text-brand mb-3">
           {eyebrow}
         </p>
       )}
