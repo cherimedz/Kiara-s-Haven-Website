@@ -6,9 +6,9 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-mute">
         <p>{`© ${new Date().getFullYear()} Kiara's Haven (Demo Concept)`}</p>
         <div className="flex items-center gap-4 text-ink">
-          <Instagram size={18} className="hover:text-accent transition-colors" />
-          <Facebook size={18} className="hover:text-accent transition-colors" />
-          <Mail size={18} className="hover:text-accent transition-colors" />
+          <Instagram size={18} className="hover:text-brand transition-colors" />
+          <Facebook size={18} className="hover:text-brand transition-colors" />
+          <Mail size={18} className="hover:text-brand transition-colors" />
         </div>
       </div>
     </footer>
