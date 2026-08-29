@@ -5,7 +5,7 @@ export default function ContactInfo() {
     <div className="relative pl-8">
       <span
         aria-hidden="true"
-        className="absolute left-0 -top-4 font-display text-6xl leading-none text-accent/35 select-none"
+        className="absolute left-0 -top-4 font-display text-6xl leading-none text-brand/35 select-none"
       >
         &ldquo;
       </span>
@@ -13,7 +13,7 @@ export default function ContactInfo() {
         Until one has loved an animal, a part of one&apos;s soul remains
         unawakened.
       </p>
-      <Heart className="text-accent mt-4" size={18} />
+      <Heart className="text-brand mt-4" size={18} />
     </div>
   );
 }
