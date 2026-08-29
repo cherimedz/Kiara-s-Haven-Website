@@ -1,6 +1,6 @@
 const line = {
   fill: "none",
-  stroke: "var(--kh-text)",
+  stroke: "var(--kh-ink)",
   strokeWidth: 1.8,
   strokeLinecap: "round",
   strokeLinejoin: "round",
@@ -43,13 +43,13 @@ export default function HeroScene({ className = "" }) {
       aria-label="Line illustration of three animals sitting outside a house"
     >
       {/* soft colour fields */}
-      <circle cx="398" cy="118" r="94" fill="var(--kh-tint-terracotta)" opacity="0.5" />
-      <circle cx="146" cy="200" r="72" fill="var(--kh-tint-ochre)" opacity="0.42" />
-      <ellipse cx="300" cy="252" rx="122" ry="88" fill="var(--kh-tint-rose)" opacity="0.24" />
+      <circle cx="398" cy="118" r="94" fill="var(--kh-brand-soft)" opacity="0.5" />
+      <circle cx="146" cy="200" r="72" fill="var(--kh-simba-soft)" opacity="0.42" />
+      <ellipse cx="300" cy="252" rx="122" ry="88" fill="var(--kh-sebastian-soft)" opacity="0.24" />
 
       {/* leafy branches framing the house */}
       <Branch
-        color="var(--kh-simba-from)"
+        color="var(--kh-simba-primary)"
         stem="M158 308 C142 254 128 200 120 142"
         leaves={[
           [152, 288, -160],
@@ -61,7 +61,7 @@ export default function HeroScene({ className = "" }) {
         ]}
       />
       <Branch
-        color="var(--kh-simba-from)"
+        color="var(--kh-simba-primary)"
         stem="M442 308 C458 254 472 200 480 142"
         leaves={[
           [448, 288, -20],
@@ -77,14 +77,14 @@ export default function HeroScene({ className = "" }) {
       <path d="M204 304 V146 L300 62 L396 146 V304" {...line} />
       <path
         d="M291 124 c4 -6 13 -6 16 1 c3 -7 12 -7 16 -1 c0 10 -16 21 -16 21 s-16 -11 -16 -21Z"
-        fill="var(--kh-accent)"
+        fill="var(--kh-brand)"
         opacity="0.85"
       />
 
       {/* ground */}
       <path
         d="M34 322 C124 294 202 302 262 306 C332 310 410 302 490 324"
-        stroke="var(--kh-accent)"
+        stroke="var(--kh-brand)"
         strokeWidth="1.8"
         fill="none"
         strokeLinecap="round"
@@ -121,7 +121,7 @@ export default function HeroScene({ className = "" }) {
       </g>
 
       {/* ground speckles */}
-      <g fill="var(--kh-accent)" opacity="0.3">
+      <g fill="var(--kh-brand)" opacity="0.3">
         {[[112, 332], [142, 342], [178, 334], [416, 336], [448, 346], [478, 338]].map(
           ([x, y], i) => (
             <circle key={i} cx={x} cy={y} r="1.8" />
