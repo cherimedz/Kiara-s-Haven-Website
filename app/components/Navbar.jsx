@@ -20,11 +20,11 @@ function LogoMark() {
       <path
         d="M6 19 L22 5 L38 19 V38 H6 Z"
         fill="none"
-        stroke="var(--kh-accent)"
+        stroke="var(--kh-brand)"
         strokeWidth="1.8"
         strokeLinejoin="round"
       />
-      <g fill="var(--kh-accent)">
+      <g fill="var(--kh-brand)">
         <ellipse cx="16.5" cy="23.5" rx="2" ry="2.7" />
         <ellipse cx="22" cy="22" rx="2" ry="2.7" />
         <ellipse cx="27.5" cy="23.5" rx="2" ry="2.7" />
@@ -38,7 +38,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-bg/95 backdrop-blur border-b border-line">
+    <header className="sticky top-0 z-50 bg-page/95 backdrop-blur border-b border-line">
       <nav className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center gap-2.5 text-ink">
           <LogoMark />
@@ -52,7 +52,7 @@ export default function Navbar() {
         <ul className="hidden lg:flex items-center gap-7 text-sm font-medium tracking-[-0.01em] text-ink">
           {navLinks.map((link) => (
             <li key={link.label}>
-              <Link href={link.href} className="hover:text-accent transition-colors">
+              <Link href={link.href} className="hover:text-brand transition-colors">
                 {link.label}
               </Link>
             </li>
@@ -81,7 +81,7 @@ export default function Navbar() {
               <Link
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="block py-2 hover:text-accent transition-colors"
+                className="block py-2 hover:text-brand transition-colors"
               >
                 {link.label}
               </Link>
