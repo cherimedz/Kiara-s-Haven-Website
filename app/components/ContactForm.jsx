@@ -14,7 +14,7 @@ export default function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="rounded-2xl border border-line bg-card p-8 text-center">
+      <div className="rounded-2xl border border-line bg-surface p-8 text-center">
         <p className="font-display text-[22px] tracking-[-0.02em] mb-2">
           Thanks for reaching out!
         </p>
@@ -34,14 +34,14 @@ export default function ContactForm() {
           required
           placeholder="Your name"
           aria-label="Your name"
-          className="w-full rounded-lg border border-line bg-card px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent"
+          className="w-full rounded-lg border border-line bg-surface px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand"
         />
         <input
           type="email"
           required
           placeholder="Email address"
           aria-label="Email address"
-          className="w-full rounded-lg border border-line bg-card px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent"
+          className="w-full rounded-lg border border-line bg-surface px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand"
         />
       </div>
       <textarea
@@ -49,7 +49,7 @@ export default function ContactForm() {
         required
         placeholder="Your message"
         aria-label="Your message"
-        className="w-full rounded-lg border border-line bg-card px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent"
+        className="w-full rounded-lg border border-line bg-surface px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand"
       />
       <Button type="submit" variant="primary">
         Send message <Send size={16} className="ml-2" />
