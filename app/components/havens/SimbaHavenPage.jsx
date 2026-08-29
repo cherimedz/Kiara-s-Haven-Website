@@ -13,16 +13,16 @@ export default function SimbaHavenPage() {
     <>
       <Navbar />
 
-      <section className="px-6 pt-14 pb-16 md:pt-20 md:pb-24 bg-gradient-to-br from-simba-from/25 to-simba-to/25">
+      <section className="px-6 pt-14 pb-16 md:pt-20 md:pb-24 bg-gradient-to-br from-simba-soft to-simba-wash">
         <div className="max-w-6xl mx-auto grid md:grid-cols-[1.2fr_1fr] gap-10 items-center">
           <div>
-            <Eyebrow className="text-simba-from mb-4">{org.focus}</Eyebrow>
+            <Eyebrow className="text-simba-primary mb-4">{org.focus}</Eyebrow>
             <h1 className="font-display font-normal text-ink text-[clamp(2.75rem,5vw,4rem)] leading-[1.02] tracking-[-0.035em] mb-6">
               {org.orgName}
             </h1>
             <p className="text-[18px] leading-[1.7] text-mute max-w-md">{org.tagline}</p>
           </div>
-          <SimbaScene className="w-full max-w-xs mx-auto text-simba-from" />
+          <SimbaScene className="w-full max-w-xs mx-auto text-simba-primary" />
         </div>
       </section>
 
@@ -35,7 +35,7 @@ export default function SimbaHavenPage() {
         <ul className="space-y-3 mb-10">
           {org.focusAreas.map((area) => (
             <li key={area} className="flex items-start gap-3 text-[17px] leading-[1.65] text-mute">
-              <CheckCircle2 size={20} className="text-simba-from shrink-0 mt-0.5" />
+              <CheckCircle2 size={20} className="text-simba-primary shrink-0 mt-0.5" />
               {area}
             </li>
           ))}
