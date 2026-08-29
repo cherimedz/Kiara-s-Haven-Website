@@ -136,12 +136,22 @@ function Princess() {
   );
 }
 
+/* Each portrait sits on its haven's level-3 surface, framed in that haven's
+   primary — five chapters of one book. */
 const pets = {
-  kiara: { Art: Kiara, bg: "#F6E3D6", sprig: "#C1592F" },
-  simba: { Art: Simba, bg: "#F5E7C4", sprig: "#B5854A" },
-  sebastian: { Art: Sebastian, bg: "#F7DDDD", sprig: "#C98F94" },
-  coco: { Art: Coco, bg: "#DFEAD6", sprig: "#6F9A6F" },
-  princess: { Art: Princess, bg: "#FADCC6", sprig: "#E8875C" },
+  kiara: { Art: Kiara, bg: "var(--kh-brand-soft)", sprig: "var(--kh-brand)" },
+  simba: { Art: Simba, bg: "var(--kh-simba-soft)", sprig: "var(--kh-simba-primary)" },
+  sebastian: {
+    Art: Sebastian,
+    bg: "var(--kh-sebastian-soft)",
+    sprig: "var(--kh-sebastian-primary)",
+  },
+  coco: { Art: Coco, bg: "var(--kh-coco-soft)", sprig: "var(--kh-coco-primary)" },
+  princess: {
+    Art: Princess,
+    bg: "var(--kh-princess-soft)",
+    sprig: "var(--kh-princess-primary)",
+  },
 };
 
 function Sprigs({ color }) {
