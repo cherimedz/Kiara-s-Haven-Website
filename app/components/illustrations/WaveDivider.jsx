@@ -1,5 +1,5 @@
 /* Organic section transition. `fill` is the colour of the section BELOW the wave. */
-export default function WaveDivider({ fill = "var(--kh-card)", flip = false, className = "" }) {
+export default function WaveDivider({ fill = "var(--kh-surface)", flip = false, className = "" }) {
   return (
     <div className={`w-full leading-[0] ${className}`} aria-hidden="true">
       <svg
