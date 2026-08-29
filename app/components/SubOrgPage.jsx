@@ -23,7 +23,7 @@ export default function SubOrgPage({ org }) {
         <ul className="space-y-3 mb-10">
           {org.focusAreas.map((area) => (
             <li key={area} className="flex items-start gap-3 text-mute">
-              <CheckCircle2 size={20} className="text-accent shrink-0 mt-0.5" />
+              <CheckCircle2 size={20} className="text-brand shrink-0 mt-0.5" />
               {area}
             </li>
           ))}
