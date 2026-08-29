@@ -4,16 +4,16 @@ import PetPortrait from "./illustrations/PetPortrait";
 import NameMotif from "./illustrations/NameMotif";
 
 const pets = [
-  { key: "kiara", name: "Kiara", lines: ["Our heart. Our home."], ink: "text-accent" },
-  { key: "simba", name: "Simba", lines: ["Wild at heart.", "Forever free."], ink: "text-simba-from" },
-  { key: "sebastian", name: "Sebastian", lines: ["Gentle soul.", "Always with us."], ink: "text-sebastian-from" },
-  { key: "coco", name: "Coco", lines: ["The connector.", "Love in action."], ink: "text-coco-from" },
-  { key: "princess", name: "Princess", lines: ["Little light.", "Big dreams."], ink: "text-princess-from" },
+  { key: "kiara", name: "Kiara", lines: ["Our heart. Our home."], ink: "text-brand" },
+  { key: "simba", name: "Simba", lines: ["Wild at heart.", "Forever free."], ink: "text-simba-primary" },
+  { key: "sebastian", name: "Sebastian", lines: ["Gentle soul.", "Always with us."], ink: "text-sebastian-primary" },
+  { key: "coco", name: "Coco", lines: ["The connector.", "Love in action."], ink: "text-coco-primary" },
+  { key: "princess", name: "Princess", lines: ["Little light.", "Big dreams."], ink: "text-princess-primary" },
 ];
 
 export default function OurStory() {
   return (
-    <section id="about" className="bg-card px-6 pt-8 pb-20">
+    <section id="about" className="bg-surface px-6 pt-8 pb-20">
       <div className="max-w-6xl mx-auto grid md:grid-cols-[1fr_1.35fr] gap-10 items-center">
         <div>
           <Eyebrow className="mb-4">Our story</Eyebrow>
@@ -21,7 +21,7 @@ export default function OurStory() {
           <h2 className="font-display font-normal text-ink text-[clamp(2.25rem,3.4vw,2.75rem)] leading-[1.08] tracking-[-0.025em] mb-6">
             Five names. Five lives.
             <br />
-            <span className="italic text-accent">One haven.</span>
+            <span className="italic text-brand">One haven.</span>
           </h2>
 
           <p className="text-[17px] leading-[1.7] text-mute mb-4">
