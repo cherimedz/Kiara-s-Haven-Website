@@ -21,7 +21,7 @@ export default function Hero() {
             <h1 className="font-display font-normal text-ink text-[clamp(2.75rem,4.4vw,3.5rem)] leading-[1.02] tracking-[-0.035em] mb-6">
               A little more kindness,
               <br />
-              <span className="italic text-accent">for every kind of life.</span>
+              <span className="italic text-brand">for every kind of life.</span>
             </h1>
 
             <p className="text-[17px] leading-[1.7] text-mute mb-8 max-w-md">
@@ -52,7 +52,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <WaveDivider fill="var(--kh-card)" />
+      <WaveDivider fill="var(--kh-surface)" />
     </section>
   );
 }
