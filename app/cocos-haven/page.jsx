@@ -1,8 +1,21 @@
-import SubOrgPage from "../components/SubOrgPage";
-import { getSubOrg } from "../lib/subOrgs";
+import { notFound } from "next/navigation";
 
-export const metadata = { title: "Coco's Haven — Kiara's Haven" };
+import HavenPage from "@/app/components/haven/HavenPage";
+import { getHaven } from "@/app/lib/havens";
+import { buildMetadata } from "@/app/lib/siteMetadata";
+
+const SLUG = "cocos-haven";
+
+export function generateMetadata() {
+  const haven = getHaven(SLUG);
+  if (!haven) return buildMetadata({ title: "Not found" });
+
+  return buildMetadata({ title: haven.name, description: haven.tagline });
+}
 
 export default function Page() {
-  return <SubOrgPage org={getSubOrg("cocos-haven")} />;
+  const haven = getHaven(SLUG);
+  if (!haven) notFound();
+
+  return <HavenPage haven={haven} />;
 }
