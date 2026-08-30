@@ -14,8 +14,11 @@
 
   --kh-line: #e5d7c8;
 
-  /* ---- Brand: terracotta. Used sparingly — scarcity keeps it meaningful. ---- */
+  /* ---- Brand: terracotta. Used sparingly — scarcity keeps it meaningful. ----
+     `--kh-brand-primary` mirrors `--kh-brand` so every palette token answers to
+     the same `-primary` / `-soft` shape and styling can be derived uniformly. */
   --kh-brand: #b96546;
+  --kh-brand-primary: #b96546;
   --kh-brand-dark: #934b35;
   --kh-brand-soft: #e9c9b8;
 
