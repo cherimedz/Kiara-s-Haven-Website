@@ -1,5 +1,5 @@
 import { PawPrint, Heart, Users, Sprout } from "lucide-react";
-import Eyebrow from "./ui/Eyebrow";
+import Eyebrow from "@/app/components/ui/Eyebrow";
 
 const stats = [
   { icon: PawPrint, value: "250+", label: "Animals cared for" },
