@@ -29,7 +29,7 @@ export default function OurStory() {
           </p>
 
           <Button href="#havens" variant="ghost" size="sm">
-            Read our story ♡
+            Meet their havens ♡
           </Button>
         </div>
 
