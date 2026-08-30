@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Button from "@/app/components/ui/Button";
+import { actionHref } from "@/app/lib/actions";
 import Eyebrow from "@/app/components/ui/Eyebrow";
 import HeroScene from "@/app/components/illustrations/HeroScene";
 import WaveDivider from "@/app/components/illustrations/WaveDivider";
@@ -31,8 +32,8 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-wrap gap-3">
-              <Button href="#wayfinder">Adopt a friend 🐾</Button>
-              <Button href="#contact" variant="ghost">
+              <Button href={actionHref("adopt")}>Adopt a friend 🐾</Button>
+              <Button href={actionHref("join-our-family")} variant="ghost">
                 Join our family
               </Button>
             </div>
