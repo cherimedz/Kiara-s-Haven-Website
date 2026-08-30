@@ -1,4 +1,9 @@
-/* Each pet is drawn individually — front-facing, shoulders-up, inside an arch frame. */
+/* Each pet is drawn individually — front-facing, shoulders-up, inside an arch
+   frame. Fur colours are literal because they are artwork rather than theme;
+   the frame and sprigs come from that animal's palette token. */
+
+import { PETS } from "@/app/lib/pets";
+import { paletteVars } from "@/app/lib/palette";
 
 function Eyes({ y = 56, dx = 11, color = "#2E241C", cx = 50 }) {
   return (
@@ -136,22 +141,13 @@ function Princess() {
   );
 }
 
-/* Each portrait sits on its haven's level-3 surface, framed in that haven's
-   primary — five chapters of one book. */
-const pets = {
-  kiara: { Art: Kiara, bg: "var(--kh-brand-soft)", sprig: "var(--kh-brand)" },
-  simba: { Art: Simba, bg: "var(--kh-simba-soft)", sprig: "var(--kh-simba-primary)" },
-  sebastian: {
-    Art: Sebastian,
-    bg: "var(--kh-sebastian-soft)",
-    sprig: "var(--kh-sebastian-primary)",
-  },
-  coco: { Art: Coco, bg: "var(--kh-coco-soft)", sprig: "var(--kh-coco-primary)" },
-  princess: {
-    Art: Princess,
-    bg: "var(--kh-princess-soft)",
-    sprig: "var(--kh-princess-primary)",
-  },
+/** Artwork for each animal, keyed by `PetKey`. Colours come from the palette. */
+const ARTWORK = {
+  kiara: Kiara,
+  simba: Simba,
+  sebastian: Sebastian,
+  coco: Coco,
+  princess: Princess,
 };
 
 function Sprigs({ color }) {
@@ -165,10 +161,19 @@ function Sprigs({ color }) {
   );
 }
 
-export default function PetPortrait({ pet }) {
-  const config = pets[pet];
-  if (!config) return null;
-  const { Art, bg, sprig } = config;
+/**
+ * Portrait of one animal, framed in an arch on that animal's palette.
+ *
+ * @param {object}  props
+ * @param {import('@/app/lib/pets').PetKey} props.pet   Selects the artwork.
+ * @param {string} [props.name]  Display name for the accessible label.
+ */
+export default function PetPortrait({ pet, name }) {
+  const Art = ARTWORK[pet];
+  if (!Art) return null;
+
+  const petMeta = PETS.find((candidate) => candidate.key === pet);
+  const { soft, primary } = paletteVars(petMeta?.token ?? "brand");
 
   return (
     <svg
@@ -176,14 +181,14 @@ export default function PetPortrait({ pet }) {
       width="100%"
       height="100%"
       role="img"
-      aria-label={`Illustrated portrait of ${pet}`}
+      aria-label={`Illustrated portrait of ${name ?? pet}`}
     >
       <defs>
         <clipPath id={`arch-${pet}`}>
           <path d="M8 120 V50 A42 42 0 0 1 92 50 V120 Z" />
         </clipPath>
       </defs>
-      <path d="M8 120 V50 A42 42 0 0 1 92 50 V120 Z" fill={bg} />
+      <path d="M8 120 V50 A42 42 0 0 1 92 50 V120 Z" fill={soft} />
       <g clipPath={`url(#arch-${pet})`}>
         <g transform="translate(7.5 20) scale(0.85)">
           <Art />
@@ -192,11 +197,11 @@ export default function PetPortrait({ pet }) {
       <path
         d="M8 120 V50 A42 42 0 0 1 92 50 V120"
         fill="none"
-        stroke={sprig}
+        stroke={primary}
         strokeWidth="1.2"
         opacity="0.35"
       />
-      <Sprigs color={sprig} />
+      <Sprigs color={primary} />
     </svg>
   );
 }
