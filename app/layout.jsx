@@ -1,6 +1,9 @@
 import { Fraunces, Manrope } from "next/font/google";
+
+import { SITE_DESCRIPTION, SITE_NAME } from "@/app/lib/siteMetadata";
 import "./globals.css";
 
+/** Fraunces carries the emotion; Manrope carries the information. */
 const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],
@@ -17,9 +20,11 @@ const manrope = Manrope({
 });
 
 export const metadata = {
-  title: "Kiara's Haven",
-  description:
-    "A concept animal-adoption-center site, and the community havens it inspired — a demo project, not a real organization.",
+  title: {
+    default: SITE_NAME,
+    template: `%s`,
+  },
+  description: SITE_DESCRIPTION,
 };
 
 export default function RootLayout({ children }) {
