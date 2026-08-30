@@ -1,10 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Button from "./ui/Button";
-import Eyebrow from "./ui/Eyebrow";
-import HeroScene from "./illustrations/HeroScene";
-import WaveDivider from "./illustrations/WaveDivider";
+import Button from "@/app/components/ui/Button";
+import Eyebrow from "@/app/components/ui/Eyebrow";
+import HeroScene from "@/app/components/illustrations/HeroScene";
+import WaveDivider from "@/app/components/illustrations/WaveDivider";
 
 export default function Hero() {
   return (
