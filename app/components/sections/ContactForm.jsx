@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Send } from "lucide-react";
-import Button from "./ui/Button";
+import Button from "@/app/components/ui/Button";
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
