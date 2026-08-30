@@ -1,24 +1,29 @@
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Wayfinder from "./components/Wayfinder";
-import OurStory from "./components/OurStory";
-import HavenSpread from "./components/HavenSpread";
-import PromiseStrip from "./components/PromiseStrip";
-import ContactSection from "./components/ContactSection";
-import WaveDivider from "./components/illustrations/WaveDivider";
-import Footer from "./components/Footer";
+import Navbar from "@/app/components/layout/Navbar";
+import Footer from "@/app/components/layout/Footer";
+import Hero from "@/app/components/sections/Hero";
+import Wayfinder from "@/app/components/sections/Wayfinder";
+import OurStory from "@/app/components/sections/OurStory";
+import HavenSpread from "@/app/components/sections/HavenSpread";
+import PromiseStrip from "@/app/components/sections/PromiseStrip";
+import ContactSection from "@/app/components/sections/ContactSection";
+import WaveDivider from "@/app/components/illustrations/WaveDivider";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
       <Navbar />
-      <Hero />
-      <Wayfinder />
-      <OurStory />
-      <WaveDivider fill="var(--kh-page)" />
-      <HavenSpread />
-      <PromiseStrip />
-      <ContactSection />
+
+      <main>
+        <Hero />
+        <Wayfinder />
+        <OurStory />
+        {/* Transitions back from the surface-level story section to the page. */}
+        <WaveDivider fill="var(--kh-page)" />
+        <HavenSpread />
+        <PromiseStrip />
+        <ContactSection />
+      </main>
+
       <Footer />
     </>
   );
