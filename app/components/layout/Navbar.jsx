@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Menu, X, Heart } from "lucide-react";
-import Button from "./ui/Button";
+import Button from "@/app/components/ui/Button";
 
 const navLinks = [
   { href: "/#wayfinder", label: "Adopt" },
