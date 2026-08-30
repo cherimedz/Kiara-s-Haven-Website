@@ -1,9 +1,10 @@
-import ContactForm from "./ContactForm";
-import ContactInfo from "./ContactInfo";
-import Eyebrow from "./ui/Eyebrow";
-import Botanical from "./illustrations/Botanical";
-import WaveDivider from "./illustrations/WaveDivider";
+import ContactForm from "@/app/components/sections/ContactForm";
+import ContactInfo from "@/app/components/sections/ContactInfo";
+import Eyebrow from "@/app/components/ui/Eyebrow";
+import Botanical from "@/app/components/illustrations/Botanical";
+import WaveDivider from "@/app/components/illustrations/WaveDivider";
 
+/** Closing section: contact form, pull-quote, and margin botanicals. */
 export default function ContactSection() {
   return (
     <>
