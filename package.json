@@ -2,6 +2,11 @@
   "name": "kiaras-haven",
   "version": "0.1.0",
   "private": true,
+  "description": "A modernized rebuild of a concept animal-adoption-center site and the four community havens it inspired.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
