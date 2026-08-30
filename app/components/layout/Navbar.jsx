@@ -4,15 +4,14 @@ import { useState } from "react";
 import Link from "next/link";
 import { Menu, X, Heart } from "lucide-react";
 import Button from "@/app/components/ui/Button";
+import { ACTIONS, actionHref } from "@/app/lib/actions";
 
-const navLinks = [
-  { href: "/#wayfinder", label: "Adopt" },
-  { href: "/#wayfinder", label: "Volunteer" },
-  { href: "/#wayfinder", label: "Donate" },
-  { href: "/#wayfinder", label: "Sponsor" },
-  { href: "/#wayfinder", label: "Impact" },
-  { href: "/#wayfinder", label: "Join Our Family" },
-];
+/* Derived from ACTIONS so every label resolves to its own section rather than
+   six different names pointing at the same anchor. */
+const NAV_LINKS = ACTIONS.map(({ id, label }) => ({
+  href: actionHref(id),
+  label,
+}));
 
 function LogoMark() {
   return (
@@ -50,7 +49,7 @@ export default function Navbar() {
         </Link>
 
         <ul className="hidden lg:flex items-center gap-7 text-sm font-medium tracking-[-0.01em] text-ink">
-          {navLinks.map((link) => (
+          {NAV_LINKS.map((link) => (
             <li key={link.label}>
               <Link href={link.href} className="hover:text-brand transition-colors">
                 {link.label}
@@ -60,7 +59,7 @@ export default function Navbar() {
         </ul>
 
         <div className="hidden lg:block">
-          <Button href="/#contact" size="sm">
+          <Button href={actionHref("donate")} size="sm">
             <Heart size={15} className="mr-2" /> Donate
           </Button>
         </div>
@@ -76,7 +75,7 @@ export default function Navbar() {
 
       {open && (
         <ul className="lg:hidden flex flex-col gap-1 px-6 pb-4 text-sm font-medium tracking-[-0.01em] text-ink">
-          {navLinks.map((link) => (
+          {NAV_LINKS.map((link) => (
             <li key={link.label}>
               <Link
                 href={link.href}
@@ -88,7 +87,7 @@ export default function Navbar() {
             </li>
           ))}
           <li className="pt-2">
-            <Button href="/#contact" size="sm" onClick={() => setOpen(false)}>
+            <Button href={actionHref("donate")} size="sm" onClick={() => setOpen(false)}>
               Donate
             </Button>
           </li>
