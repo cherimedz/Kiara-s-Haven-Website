@@ -19,6 +19,7 @@
  * @property {string}      mission    Paragraph-length description.
  * @property {string[]}    focusAreas Bulleted areas of work.
  * @property {string}      dedication Why this haven carries this animal's name.
+ * @property {string}      remembering A sentence about the animal themselves.
  */
 
 /** @type {readonly Haven[]} */
@@ -38,6 +39,8 @@ export const HAVENS = Object.freeze([
       "Biodiversity monitoring in partner regions",
     ],
     dedication: "wild at heart, forever free.",
+    remembering:
+      "Simba never once walked a path if there was a wall to climb instead. He was happiest outdoors, in weather nobody else wanted to be out in.",
   },
   {
     slug: "sebastians-haven",
@@ -54,6 +57,8 @@ export const HAVENS = Object.freeze([
       "Support resources for caregivers",
     ],
     dedication: "a gentle soul, always with us.",
+    remembering:
+      "Sebastian slowed down long before we noticed, and he did it without complaint. He taught us that company matters more at the end than at the beginning.",
   },
   {
     slug: "cocos-haven",
@@ -70,6 +75,8 @@ export const HAVENS = Object.freeze([
       "Volunteer-driven mentorship programs",
     ],
     dedication: "the connector, love in action.",
+    remembering:
+      "Coco introduced everyone to everyone. No animal stayed a stranger in a room she was in, and no person stayed on the edge of it for long.",
   },
   {
     slug: "princess-haven",
@@ -86,6 +93,8 @@ export const HAVENS = Object.freeze([
       "Community mentorship for young people",
     ],
     dedication: "a little light with big dreams.",
+    remembering:
+      "Princess is small, loud, and entirely certain the world was built for her. She is still here, and still right about that.",
   },
 ]);
 
