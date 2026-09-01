@@ -22,6 +22,8 @@
  * @property {string}      remembering A sentence about the animal themselves.
  * @property {{value: string, label: string}[]} stats Illustrative figures — this
  *   is a demo concept, so they are sample data rather than real reporting.
+ * @property {string[]}    helpWith   Action ids from lib/actions.js that this
+ *   haven most needs, used to build its "how you can help" row.
  */
 
 /** @type {readonly Haven[]} */
@@ -48,6 +50,7 @@ export const HAVENS = Object.freeze([
       { value: "12", label: "Habitats supported" },
       { value: "6", label: "Partner conservation groups" },
     ],
+    helpWith: ["sponsor", "donate", "impact"],
   },
   {
     slug: "sebastians-haven",
@@ -71,6 +74,7 @@ export const HAVENS = Object.freeze([
       { value: "30", label: "Seniors supported" },
       { value: "12", label: "Caregivers backed" },
     ],
+    helpWith: ["volunteer", "donate", "join-our-family"],
   },
   {
     slug: "cocos-haven",
@@ -94,6 +98,7 @@ export const HAVENS = Object.freeze([
       { value: "8", label: "Shelter partnerships" },
       { value: "45", label: "Active volunteers" },
     ],
+    helpWith: ["volunteer", "join-our-family", "donate"],
   },
   {
     slug: "princess-haven",
@@ -117,6 +122,7 @@ export const HAVENS = Object.freeze([
       { value: "15", label: "Programs running" },
       { value: "20", label: "Community mentors" },
     ],
+    helpWith: ["sponsor", "volunteer", "donate"],
   },
 ]);
 
