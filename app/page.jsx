@@ -7,6 +7,7 @@ import HavenSpread from "@/app/components/sections/HavenSpread";
 import PromiseStrip from "@/app/components/sections/PromiseStrip";
 import ContactSection from "@/app/components/sections/ContactSection";
 import WaveDivider from "@/app/components/illustrations/WaveDivider";
+import Reveal from "@/app/components/ui/Reveal";
 
 export default function HomePage() {
   return (
@@ -14,14 +15,26 @@ export default function HomePage() {
       <Navbar />
 
       <main>
+        {/* The hero animates on load; everything below it waits to be scrolled
+            to. One shared `Reveal` owns the timing so nothing drifts. */}
         <Hero />
-        <Wayfinder />
-        <OurStory />
+        <Reveal>
+          <Wayfinder />
+        </Reveal>
+        <Reveal>
+          <OurStory />
+        </Reveal>
         {/* Transitions back from the surface-level story section to the page. */}
         <WaveDivider fill="var(--kh-page)" />
-        <HavenSpread />
-        <PromiseStrip />
-        <ContactSection />
+        <Reveal>
+          <HavenSpread />
+        </Reveal>
+        <Reveal>
+          <PromiseStrip />
+        </Reveal>
+        <Reveal>
+          <ContactSection />
+        </Reveal>
       </main>
 
       <Footer />
