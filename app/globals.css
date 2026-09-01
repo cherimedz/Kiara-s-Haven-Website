@@ -14,6 +14,16 @@
 
   --kh-line: #e5d7c8;
 
+  /* ---- Illustration ink ----
+     Hand-drawn linework is never pure black. This warm brown is the default
+     stroke for decorative artwork; functional Lucide icons keep the ink scale.
+     Decorative marks sit between --kh-draw-quiet and --kh-draw-strong so they
+     stay behind the content rather than competing with it. */
+  --kh-draw: #6b4d3b;
+  --kh-draw-quiet: 0.25;
+  --kh-draw-soft: 0.35;
+  --kh-draw-strong: 0.55;
+
   /* ---- Brand: terracotta. Used sparingly — scarcity keeps it meaningful. ----
      `--kh-brand-primary` mirrors `--kh-brand` so every palette token answers to
      the same `-primary` / `-soft` shape and styling can be derived uniformly. */
@@ -64,6 +74,8 @@
 
   --color-line: var(--kh-line);
 
+  --color-draw: var(--kh-draw);
+
   --color-brand: var(--kh-brand);
   --color-brand-dark: var(--kh-brand-dark);
   --color-brand-soft: var(--kh-brand-soft);
@@ -112,4 +124,12 @@ body {
 /* Fraunces carries the emotion; keep its optical sizing soft rather than formal. */
 .font-display {
   font-variation-settings: "SOFT" 40, "WONK" 1;
+}
+
+/* Decoration should feel like it grew there, not like it was placed there.
+   Anything using these enters from an edge and is allowed to be cropped. */
+.decor {
+  pointer-events: none;
+  position: absolute;
+  color: var(--kh-draw);
 }
