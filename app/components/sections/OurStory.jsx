@@ -2,14 +2,31 @@ import Button from "@/app/components/ui/Button";
 import Eyebrow from "@/app/components/ui/Eyebrow";
 import PetPortrait from "@/app/components/illustrations/PetPortrait";
 import NameMotif from "@/app/components/illustrations/NameMotif";
+import Botanical from "@/app/components/illustrations/Botanical";
 import { PETS } from "@/app/lib/pets";
 import { getPalette } from "@/app/lib/palette";
 
 /** The personal story behind the project, with a portrait for each animal. */
 export default function OurStory() {
   return (
-    <section id="about" className="bg-surface px-6 pt-8 pb-20">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-[1fr_1.35fr] gap-10 items-center">
+    <section
+      id="about"
+      className="relative overflow-hidden bg-surface paper-grain px-6 pt-8 pb-20"
+    >
+      {/* This is the emotional reveal of the site, so it gets the fullest
+          decoration: branches entering from both edges to frame the row of
+          portraits. Every other section is quieter than this one. */}
+      <Botanical
+        variant="coco"
+        className="decor -left-10 top-10 hidden lg:block w-24 opacity-25"
+      />
+      <Botanical
+        flip
+        variant="princess"
+        className="decor -right-10 bottom-4 hidden lg:block w-24 opacity-25"
+      />
+
+      <div className="relative max-w-6xl mx-auto grid md:grid-cols-[1fr_1.35fr] gap-10 items-center">
         <div>
           <Eyebrow className="mb-4">Our story</Eyebrow>
 

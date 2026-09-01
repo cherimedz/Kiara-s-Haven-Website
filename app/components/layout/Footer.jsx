@@ -1,5 +1,6 @@
 import { Instagram, Facebook, Mail } from "lucide-react";
 
+import Botanical from "@/app/components/illustrations/Botanical";
 import { SITE_NAME } from "@/app/lib/siteMetadata";
 
 /**
@@ -15,8 +16,20 @@ const SOCIAL_LINKS = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-line px-6 py-6">
-      <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-mute">
+    <footer className="relative overflow-hidden border-t border-line px-6 py-6">
+      {/* Cropped hard by the footer's own height, which is the point: the
+          garden carries on past the bottom of the page. */}
+      <Botanical
+        variant="kiara"
+        className="decor -left-8 -bottom-10 w-20 opacity-20"
+      />
+      <Botanical
+        flip
+        variant="simba"
+        className="decor -right-8 -bottom-10 w-20 opacity-20"
+      />
+
+      <div className="relative max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-mute">
         <p>{`© ${new Date().getFullYear()} ${SITE_NAME} (Demo Concept)`}</p>
 
         <ul className="flex items-center gap-2 list-none">
