@@ -20,6 +20,8 @@
  * @property {string[]}    focusAreas Bulleted areas of work.
  * @property {string}      dedication Why this haven carries this animal's name.
  * @property {string}      remembering A sentence about the animal themselves.
+ * @property {{value: string, label: string}[]} stats Illustrative figures — this
+ *   is a demo concept, so they are sample data rather than real reporting.
  */
 
 /** @type {readonly Haven[]} */
@@ -41,6 +43,11 @@ export const HAVENS = Object.freeze([
     dedication: "wild at heart, forever free.",
     remembering:
       "Simba never once walked a path if there was a wall to climb instead. He was happiest outdoors, in weather nobody else wanted to be out in.",
+    stats: [
+      { value: "40+", label: "Hectares under protection" },
+      { value: "12", label: "Habitats supported" },
+      { value: "6", label: "Partner conservation groups" },
+    ],
   },
   {
     slug: "sebastians-haven",
@@ -59,6 +66,11 @@ export const HAVENS = Object.freeze([
     dedication: "a gentle soul, always with us.",
     remembering:
       "Sebastian slowed down long before we noticed, and he did it without complaint. He taught us that company matters more at the end than at the beginning.",
+    stats: [
+      { value: "85", label: "Home visits each month" },
+      { value: "30", label: "Seniors supported" },
+      { value: "12", label: "Caregivers backed" },
+    ],
   },
   {
     slug: "cocos-haven",
@@ -77,6 +89,11 @@ export const HAVENS = Object.freeze([
     dedication: "the connector, love in action.",
     remembering:
       "Coco introduced everyone to everyone. No animal stayed a stranger in a room she was in, and no person stayed on the edge of it for long.",
+    stats: [
+      { value: "60", label: "Families supported" },
+      { value: "8", label: "Shelter partnerships" },
+      { value: "45", label: "Active volunteers" },
+    ],
   },
   {
     slug: "princess-haven",
@@ -95,6 +112,11 @@ export const HAVENS = Object.freeze([
     dedication: "a little light with big dreams.",
     remembering:
       "Princess is small, loud, and entirely certain the world was built for her. She is still here, and still right about that.",
+    stats: [
+      { value: "120", label: "Children reached" },
+      { value: "15", label: "Programs running" },
+      { value: "20", label: "Community mentors" },
+    ],
   },
 ]);
 
