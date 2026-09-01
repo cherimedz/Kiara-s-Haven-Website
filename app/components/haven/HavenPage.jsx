@@ -10,6 +10,7 @@ import HavenDedication from "@/app/components/haven/HavenDedication";
 import HavenHelp from "@/app/components/haven/HavenHelp";
 import HavenSiblings from "@/app/components/haven/HavenSiblings";
 import Botanical from "@/app/components/illustrations/Botanical";
+import Reveal from "@/app/components/ui/Reveal";
 import WaveDivider from "@/app/components/illustrations/WaveDivider";
 import { getPalette } from "@/app/lib/palette";
 
@@ -36,8 +37,15 @@ export default function HavenPage({ haven }) {
         {/* Hero surface → the surface-level mission section. */}
         <WaveDivider fill="var(--kh-surface)" />
 
-        <section className="bg-surface px-6 pt-4 pb-16">
-          <div className="max-w-3xl mx-auto">
+        <section className="relative overflow-hidden bg-surface paper-grain px-6 pt-4 pb-16">
+          {/* Enters from the right edge and is cropped by it — the garden is
+              meant to continue past the viewport rather than sit inside it. */}
+          <Botanical
+            variant={haven.token}
+            className="decor -right-8 top-8 hidden lg:block w-24 opacity-25"
+          />
+
+          <Reveal className="max-w-3xl mx-auto">
             <Eyebrow className="mb-4">Our mission</Eyebrow>
             <p className="text-[18px] leading-[1.75] text-mute mb-10">{haven.mission}</p>
 
@@ -59,29 +67,40 @@ export default function HavenPage({ haven }) {
                 </li>
               ))}
             </ul>
-          </div>
+          </Reveal>
         </section>
 
         {/* Surface → back to the page ground. */}
         <WaveDivider fill="var(--kh-page)" />
 
-        <HavenStats haven={haven} />
-        <HavenDedication haven={haven} />
-        <HavenHelp haven={haven} />
-        <HavenSiblings haven={haven} />
+        <Reveal>
+          <HavenStats haven={haven} />
+        </Reveal>
+        <Reveal>
+          <HavenDedication haven={haven} />
+        </Reveal>
+        <Reveal>
+          <HavenHelp haven={haven} />
+        </Reveal>
+        <Reveal>
+          <HavenSiblings haven={haven} />
+        </Reveal>
 
         <section className="relative overflow-hidden px-6 pb-20">
+          {/* Margin ornaments, in this haven's own vegetation rather than a
+              fixed one — the closing line is the last thing read, so it should
+              still be recognisably this haven. */}
           <Botanical
-            aria-hidden="true"
-            className="pointer-events-none absolute -left-6 bottom-0 w-20 md:w-24 text-coco-primary opacity-25"
+            variant={haven.token}
+            className="decor -left-7 bottom-0 w-20 md:w-24 opacity-25"
           />
           <Botanical
             flip
-            aria-hidden="true"
-            className="pointer-events-none absolute -right-6 bottom-0 w-20 md:w-24 text-coco-primary opacity-25"
+            variant={haven.token}
+            className="decor -right-7 bottom-0 w-20 md:w-24 opacity-25"
           />
 
-          <div className="relative max-w-2xl mx-auto text-center">
+          <Reveal className="relative max-w-2xl mx-auto text-center">
             <p className="font-display italic text-[19px] leading-[1.55] text-mute mb-7">
               Every haven here started with one animal who mattered to us.
             </p>
@@ -94,7 +113,7 @@ export default function HavenPage({ haven }) {
                 Get in touch
               </Button>
             </div>
-          </div>
+          </Reveal>
         </section>
       </main>
 

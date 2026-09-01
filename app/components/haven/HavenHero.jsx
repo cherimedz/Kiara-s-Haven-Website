@@ -1,5 +1,6 @@
 import Eyebrow from "@/app/components/ui/Eyebrow";
 import HavenMotif from "@/app/components/illustrations/HavenMotif";
+import Botanical from "@/app/components/illustrations/Botanical";
 import { getPalette } from "@/app/lib/palette";
 
 /**
@@ -13,8 +14,17 @@ export default function HavenHero({ haven }) {
   const palette = getPalette(haven.token);
 
   return (
-    <section className={`${palette.hero} ${palette.ink} px-6 pt-14 pb-16 md:pt-20 md:pb-24`}>
-      <div className="max-w-6xl mx-auto grid md:grid-cols-[1.2fr_1fr] gap-10 items-center">
+    <section
+      className={`relative overflow-hidden paper-grain ${palette.hero} ${palette.ink} px-6 pt-14 pb-16 md:pt-20 md:pb-24`}
+    >
+      {/* Half a sprig, cropped by the left edge. Decoration enters the page
+          from outside it rather than being placed inside the composition. */}
+      <Botanical
+        variant={haven.token}
+        className="decor -left-10 -bottom-6 w-28 md:w-32 opacity-25"
+      />
+
+      <div className="relative max-w-6xl mx-auto grid md:grid-cols-[1.2fr_1fr] gap-10 items-center">
         <div>
           <Eyebrow className="mb-4">{haven.focus}</Eyebrow>
           <h1 className="font-display font-normal text-[clamp(2.75rem,5vw,4rem)] leading-[1.02] tracking-[-0.035em] mb-6">
