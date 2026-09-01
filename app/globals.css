@@ -24,6 +24,13 @@
   --kh-draw-soft: 0.35;
   --kh-draw-strong: 0.55;
 
+  /* ---- Paper grain ----
+     A tiled greyscale turbulence tile, composited over the cream at a few
+     percent. The goal is not a visible texture — it is that the page reads
+     warmer than a flat fill without anyone noticing why. All-SVG, so it obeys
+     the no-raster-assets rule. */
+  --kh-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)' opacity='0.05'/%3E%3C/svg%3E");
+
   /* ---- Brand: terracotta. Used sparingly — scarcity keeps it meaningful. ----
      `--kh-brand-primary` mirrors `--kh-brand` so every palette token answers to
      the same `-primary` / `-soft` shape and styling can be derived uniformly. */
@@ -113,7 +120,8 @@
 }
 
 body {
-  background: var(--color-page);
+  background-color: var(--color-page);
+  background-image: var(--kh-grain);
   color: var(--color-ink);
   font-family: var(--font-body);
   font-size: 1rem;
@@ -124,6 +132,13 @@ body {
 /* Fraunces carries the emotion; keep its optical sizing soft rather than formal. */
 .font-display {
   font-variation-settings: "SOFT" 40, "WONK" 1;
+}
+
+/* Tinted sections paint their own background-color, which would cover the body
+   grain. Adding this class re-lays the same tile on top of that colour so the
+   texture is continuous down the page rather than only on cream. */
+.paper-grain {
+  background-image: var(--kh-grain);
 }
 
 /* Decoration should feel like it grew there, not like it was placed there.
