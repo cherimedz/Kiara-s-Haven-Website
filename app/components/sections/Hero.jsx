@@ -1,22 +1,25 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Button from "@/app/components/ui/Button";
 import { actionHref } from "@/app/lib/actions";
 import Eyebrow from "@/app/components/ui/Eyebrow";
 import HeroScene from "@/app/components/illustrations/HeroScene";
 import WaveDivider from "@/app/components/illustrations/WaveDivider";
+import Botanical from "@/app/components/illustrations/Botanical";
+import Reveal from "@/app/components/ui/Reveal";
 
 export default function Hero() {
   return (
-    <section id="home" className="relative">
-      <div className="px-6 pt-12 pb-4 md:pt-16">
+    <section id="home" className="relative overflow-hidden">
+      {/* Kiara's own vegetation, growing in from the bottom-left and cropped by
+          the edge — the homepage belongs to the parent haven, not to one of
+          the four. */}
+      <Botanical
+        variant="kiara"
+        className="decor -left-8 bottom-0 hidden md:block w-24 lg:w-28 opacity-25"
+      />
+
+      <div className="relative px-6 pt-12 pb-4 md:pt-16">
         <div className="max-w-6xl mx-auto grid md:grid-cols-[1.08fr_1fr] gap-8 items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+          <Reveal>
             <Eyebrow className="mb-5">A home for paws. A future for all.</Eyebrow>
 
             <h1 className="font-display font-normal text-ink text-[clamp(2.75rem,4.4vw,3.5rem)] leading-[1.02] tracking-[-0.035em] mb-6">
@@ -37,19 +40,14 @@ export default function Hero() {
                 Join our family
               </Button>
             </div>
-          </motion.div>
+          </Reveal>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="flex flex-col md:flex-row md:items-end gap-1"
-          >
+          <Reveal className="flex flex-col md:flex-row md:items-end gap-1">
             <HeroScene className="w-full md:flex-1 min-w-0 h-auto" />
             <p className="font-display italic text-[15px] leading-[1.5] text-mute text-center md:text-left md:w-32 md:shrink-0 md:mb-12">
               In memory of five souls who made this all possible. ♡
             </p>
-          </motion.div>
+          </Reveal>
         </div>
       </div>
 
