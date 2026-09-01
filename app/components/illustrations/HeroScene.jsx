@@ -1,3 +1,5 @@
+import { leafPath } from "@/app/components/illustrations/leaf";
+
 const line = {
   fill: "none",
   stroke: "var(--kh-ink)",
@@ -5,20 +7,6 @@ const line = {
   strokeLinecap: "round",
   strokeLinejoin: "round",
 };
-
-/* almond-shaped leaf growing from (bx,by) at `angle` degrees */
-function leafPath(bx, by, angle, len, width) {
-  const r = (angle * Math.PI) / 180;
-  const cos = Math.cos(r);
-  const sin = Math.sin(r);
-  const tx = bx + cos * len;
-  const ty = by + sin * len;
-  const px = -sin * width;
-  const py = cos * width;
-  const mx = bx + cos * len * 0.45;
-  const my = by + sin * len * 0.45;
-  return `M${bx} ${by} Q${mx + px} ${my + py} ${tx} ${ty} Q${mx - px} ${my - py} ${bx} ${by}Z`;
-}
 
 function Branch({ stem, leaves, color }) {
   return (
