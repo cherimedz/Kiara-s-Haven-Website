@@ -116,3 +116,12 @@ export const ACTIONS = Object.freeze([
 export function actionHref(id) {
   return `/get-involved#${id}`;
 }
+
+/**
+ * Look up an action by id.
+ * @param {string} id
+ * @returns {Action | undefined}
+ */
+export function getAction(id) {
+  return ACTIONS.find((action) => action.id === id);
+}

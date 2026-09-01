@@ -49,3 +49,13 @@ export const PETS = Object.freeze([
     tagline: ["Little light.", "Big dreams."],
   },
 ]);
+
+/**
+ * Look up a pet by key. Haven tokens and pet keys use the same vocabulary, so a
+ * haven's token resolves directly to the animal it is named after.
+ * @param {string} key
+ * @returns {Pet | undefined}
+ */
+export function getPet(key) {
+  return PETS.find((pet) => pet.key === key);
+}
