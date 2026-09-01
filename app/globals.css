@@ -148,3 +148,51 @@ body {
   position: absolute;
   color: var(--kh-draw);
 }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---- Scroll reveal ----
+   See `components/ui/Reveal`. Progressive enhancement in the strict sense: the
+   element's normal state is fully visible, and the animation is only attached
+   where scroll-driven timelines exist and motion has not been declined. The
+   range fades each section in as it enters and finishes well before it reaches
+   the middle of the screen, so nothing is still moving while it is being read. */
+@keyframes kh-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: kh-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 5% entry 60%;
+    }
+  }
+
+  /* Paper has no scroll position, so a scroll-driven animation would freeze
+     every section at its start frame and print a blank page. */
+  @media print {
+    .reveal {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
