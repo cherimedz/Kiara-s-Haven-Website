@@ -36,7 +36,7 @@ app/
 
 ## Design system
 
-Three documents govern the look; don't freelance around them.
+Five things govern the look; don't freelance around them.
 
 **Colour** — every value is a CSS custom property in `globals.css`. Never write a
 hex code in a component. The palette follows 70/20/10: cream and ink dominate, a
@@ -54,6 +54,51 @@ emotional line and nothing else. Buttons are sentence case and never serif.
 than hard-coded fills. Fur colours in `PetPortrait` are the one exception: those
 are artwork, not theme.
 
+The direction is *handmade sanctuary*: a storybook and a family keepsake, not a
+cartoon animal site. Fine, slightly uneven brown linework on cream, drawn at
+1.0–1.5 stroke and never at a mechanical vector weight. Decorative artwork
+strokes `--kh-draw` (#6B4D3B), never black, at 0.25–0.55 opacity so it sits
+behind the content. The `.decor` class in `globals.css` carries that default.
+
+*The five symbols* live in `NameMotif` — Kiara a house holding a paw, Simba a
+sunrise behind a hill, Sebastian a crescent moon, Coco three linked forms,
+Princess a star. Each is deliberately indirect; Simba is never drawn as a lion.
+
+*The botanicals* live in `Botanical`, one per animal: Kiara garden wildflowers,
+Simba tall grass and broad leaves, Sebastian sparse delicate flowers, Coco
+twining vines, Princess sprouts and star-petalled flowers. Same drawing style,
+different vegetation — that is how a page says which haven it is without the
+illustration style changing. `leaf.js` holds the shared curve geometry.
+
+*Placement* follows four rules, and they matter more than the drawings do:
+
+1. Never decorate every empty space. Cream is part of the identity.
+2. Decoration enters from a page edge; it is never dropped into the middle.
+3. Never centre a decorative illustration — that reads as a stock asset.
+4. Let it be cropped. Half a branch implies the page continues past the frame.
+
+The stats strips carry no illustration at all, on purpose: the numbers are the
+picture, and they are set in Fraunces because they belong to the editorial
+voice. `PromiseStrip` used Lucide icons there and no longer does.
+
+**Icons** — one library, one job. Lucide covers *function*: arrows, menu, close,
+form affordances. The hand-drawn marks cover *emotion*: haven identity,
+decoration, the five animals. Don't mix them inside one element, and don't reach
+for Lucide because a decorative slot looks empty.
+
+**Motion** — slow and alive, "a quiet garden moving in the wind". One component
+owns it: `ui/Reveal`, a CSS scroll-driven fade behind an `@supports` query.
+
+It is CSS rather than a motion library for a specific reason. A JS reveal has to
+render hidden and un-hide after hydration, so the server HTML ships
+`opacity: 0` and the page is blank without JavaScript, in a screenshot, or in
+print. Here the resting state is visible and the animation is purely additive:
+no scroll-timeline support, reduced motion, an unscrollable page, or print, and
+the visitor just gets the finished page. Verify that property before replacing
+it — `curl` a route and grep for `opacity:0`; there should be none.
+
+No bouncing, spinning, confetti, or fast parallax.
+
 ## Two rules worth stating
 
 **Tailwind classes must be literal.** `text-${token}-deep` compiles to nothing —
@@ -70,4 +115,10 @@ Several pairings that looked fine were failing: terracotta on cream is 4.01:1 at
 npm run lint     # must be clean
 npm run build    # must pass; all routes are static
 npm run dev      # then check the homepage and at least one haven page
+```
+
+Nothing in the served HTML should start invisible:
+
+```bash
+curl -s localhost:3000/simbas-haven | grep -c 'opacity:0'   # must be 0
 ```
