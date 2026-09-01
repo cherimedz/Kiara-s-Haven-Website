@@ -150,13 +150,43 @@ const ARTWORK = {
   princess: Princess,
 };
 
-function Sprigs({ color }) {
+/**
+ * Frames. Five hand-drawn arches rather than one arch reused five times — an
+ * exact repeat reads as a template, and the irregularity is what makes the row
+ * of portraits feel drawn rather than generated. Each silhouette leans toward
+ * that animal's meaning: Sebastian's is the lowest and softest, Simba's the
+ * tallest and least symmetrical, Princess's the narrowest and most upright.
+ *
+ * All five are cubic curves, not arcs, so no two shoulders match exactly.
+ */
+const FRAMES = {
+  kiara: "M9 120 V56 C9 31 26 14 50 14 C74 14 92 32 92 57 V120 Z",
+  simba: "M7 120 V60 C7 30 24 10 49 11 C76 12 94 34 92 60 V120 Z",
+  sebastian: "M10 120 V62 C10 40 26 22 50 22 C75 22 90 39 90 63 V120 Z",
+  coco: "M5 120 V58 C4 33 24 16 50 16 C77 16 95 36 94 61 V120 Z",
+  princess: "M13 120 V54 C13 27 28 12 51 12 C72 12 87 26 87 50 V120 Z",
+};
+
+/* A few sprigs at the base of the frame, in that animal's own vegetation —
+   the same idea as `Botanical`, at the scale a portrait can carry. */
+const SPRIG_TIPS = {
+  kiara: <g><circle cx="24" cy="100" r="1.7" /><circle cx="76" cy="100" r="1.7" /></g>,
+  simba: <g fill="none"><path d="M20 112 C19 105 19 100 21 96" /><path d="M80 112 C81 105 81 100 79 96" /></g>,
+  sebastian: null,
+  coco: <g fill="none"><path d="M26 110 C32 108 38 109 42 113" /><path d="M74 110 C68 108 62 109 58 113" /></g>,
+  princess: <g><circle cx="27" cy="98" r="1.5" /><circle cx="73" cy="98" r="1.5" /><circle cx="50" cy="116" r="1.3" /></g>,
+};
+
+function Sprigs({ pet, color }) {
   return (
-    <g stroke={color} strokeWidth="1.1" fill="none" strokeLinecap="round" opacity="0.75">
-      <path d="M18 108 C24 104 30 106 34 112" />
-      <path d="M22 106 c-1 -3 0 -5 2 -6 M28 107 c0 -3 1 -5 4 -6" />
-      <path d="M82 108 C76 104 70 106 66 112" />
-      <path d="M78 106 c1 -3 0 -5 -2 -6 M72 107 c0 -3 -1 -5 -4 -6" />
+    <g stroke={color} strokeWidth="1.1" fill={color} strokeLinecap="round" opacity="0.75">
+      <g fill="none">
+        <path d="M18 108 C24 104 30 106 34 112" />
+        <path d="M22 106 c-1 -3 0 -5 2 -6 M28 107 c0 -3 1 -5 4 -6" />
+        <path d="M82 108 C76 104 70 106 66 112" />
+        <path d="M78 106 c1 -3 0 -5 -2 -6 M72 107 c0 -3 -1 -5 -4 -6" />
+      </g>
+      {SPRIG_TIPS[pet]}
     </g>
   );
 }
@@ -174,6 +204,7 @@ export default function PetPortrait({ pet, name }) {
 
   const petMeta = PETS.find((candidate) => candidate.key === pet);
   const { soft, primary } = paletteVars(petMeta?.token ?? "brand");
+  const frame = FRAMES[pet];
 
   return (
     <svg
@@ -185,23 +216,17 @@ export default function PetPortrait({ pet, name }) {
     >
       <defs>
         <clipPath id={`arch-${pet}`}>
-          <path d="M8 120 V50 A42 42 0 0 1 92 50 V120 Z" />
+          <path d={frame} />
         </clipPath>
       </defs>
-      <path d="M8 120 V50 A42 42 0 0 1 92 50 V120 Z" fill={soft} />
+      <path d={frame} fill={soft} />
       <g clipPath={`url(#arch-${pet})`}>
         <g transform="translate(7.5 20) scale(0.85)">
           <Art />
         </g>
       </g>
-      <path
-        d="M8 120 V50 A42 42 0 0 1 92 50 V120"
-        fill="none"
-        stroke={primary}
-        strokeWidth="1.2"
-        opacity="0.35"
-      />
-      <Sprigs color={primary} />
+      <path d={frame} fill="none" stroke={primary} strokeWidth="1.2" opacity="0.35" />
+      <Sprigs pet={pet} color={primary} />
     </svg>
   );
 }
