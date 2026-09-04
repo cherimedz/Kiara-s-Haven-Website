@@ -1,44 +1,42 @@
-import Eyebrow from "@/app/components/ui/Eyebrow";
+import Container from "@/app/components/ui/Container";
+import Section from "@/app/components/ui/Section";
+import SectionHeading from "@/app/components/ui/SectionHeading";
+import StatRow from "@/app/components/ui/StatRow";
 
 /**
  * Illustrative figures — this is a demo concept, so they are sample data
- * rather than reporting. Matches the shape `HavenStats` reads per haven.
+ * rather than reporting. Labelled in that spirit: "lives imagined", not
+ * "lives saved".
  */
 const stats = [
-  { value: "250+", label: "Animals cared for" },
-  { value: "120+", label: "Adoptions" },
-  { value: "300+", label: "Volunteers" },
-  { value: "20+", label: "Communities impacted" },
+  { value: "250+", label: "Lives imagined" },
+  { value: "120+", label: "Homes found" },
+  { value: "300+", label: "Hands helping" },
+  { value: "4", label: "Stories continued" },
 ];
 
+/**
+ * No card, no border, no icons. A bordered box around four numbers is what
+ * makes a page read as a dashboard; here the figures sit straight on the page
+ * with hairline rules between them and are given room instead of furniture.
+ */
 export default function PromiseStrip() {
   return (
-    <section className="px-6 pb-8">
-      <div className="max-w-6xl mx-auto bg-surface rounded-2xl border border-line px-8 py-9 grid md:grid-cols-[minmax(0,0.9fr)_minmax(0,2fr)] gap-8 items-center">
-        <div>
-          <Eyebrow className="mb-3">Our promise</Eyebrow>
-          <h3 className="font-display font-normal text-ink text-[28px] leading-[1.15] tracking-[-0.025em]">
-            Kindness today.
-            <br />
-            Hope forever. <span className="text-brand">♡</span>
-          </h3>
-        </div>
+    <Section rhythm="stats">
+      <Container>
+        <SectionHeading
+          eyebrow="Our promise"
+          title={
+            <>
+              Kindness today.
+              <br />
+              <span className="italic text-brand">Hope forever.</span>
+            </>
+          }
+        />
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-line">
-          {/* No illustration in this section by design — Lucide is reserved for
-              functional UI, custom marks carry emotion, and decorative figures
-              are neither. The typography is given the room instead. */}
-          {stats.map(({ value, label }) => (
-            <div key={label} className="px-5 text-center first:pl-0">
-              {/* Statistics belong to the editorial voice, so they're set in Fraunces. */}
-              <p className="font-display font-medium text-ink text-[34px] leading-none tracking-[-0.02em]">
-                {value}
-              </p>
-              <p className="text-[13px] text-mute mt-2 leading-[1.5]">{label}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+        <StatRow stats={stats} accent="text-ink" />
+      </Container>
+    </Section>
   );
 }
