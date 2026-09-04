@@ -1,21 +1,33 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu, X, Heart } from "lucide-react";
-import Button from "@/app/components/ui/Button";
-import { ACTIONS, actionHref } from "@/app/lib/actions";
+import { Menu, X, ArrowRight } from "lucide-react";
 
-/* Derived from ACTIONS so every label resolves to its own section rather than
-   six different names pointing at the same anchor. */
-const NAV_LINKS = ACTIONS.map(({ id, label }) => ({
-  href: actionHref(id),
-  label,
-}));
+import Button from "@/app/components/ui/Button";
+import Container from "@/app/components/ui/Container";
+import { actionHref } from "@/app/lib/actions";
+import { INTERACTION } from "@/app/lib/layout";
+
+/**
+ * Five links, not every route.
+ *
+ * The site has six actions and four havens; putting all ten in the bar would
+ * make the most important ones invisible. Sponsor and the havens stay
+ * discoverable through the homepage and `/get-involved`, and "Join our family"
+ * is promoted out of the list into the one CTA.
+ */
+const NAV_LINKS = [
+  { href: "/", label: "Home" },
+  { href: actionHref("adopt"), label: "Adopt" },
+  { href: actionHref("volunteer"), label: "Volunteer" },
+  { href: actionHref("donate"), label: "Donate" },
+  { href: actionHref("impact"), label: "Impact" },
+];
 
 function LogoMark() {
   return (
-    <svg viewBox="0 0 44 44" width="40" height="40" aria-hidden="true">
+    <svg viewBox="0 0 44 44" width="38" height="38" aria-hidden="true">
       <path
         d="M6 19 L22 5 L38 19 V38 H6 Z"
         fill="none"
@@ -35,63 +47,102 @@ function LogoMark() {
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  /* The bar starts transparent and sits on the cream. It only earns a surface
+     once there is content behind it — a permanently opaque bar with a shadow
+     reads as chrome bolted onto the page rather than part of it. */
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const dressed = scrolled || open;
 
   return (
-    <header className="sticky top-0 z-50 bg-page/95 backdrop-blur border-b border-line">
-      <nav className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-        <Link href="/" className="flex items-center gap-2.5 text-ink">
+    <header
+      className={`sticky top-0 z-50 transition-[background-color,border-color,box-shadow] duration-standard ${
+        dressed
+          ? "bg-surface/85 backdrop-blur border-b border-line shadow-lift"
+          : "bg-transparent border-b border-transparent"
+      }`}
+    >
+      <Container as="nav" className="h-16 md:h-18 lg:h-20 flex items-center justify-between">
+        <Link
+          href="/"
+          className={`flex items-center gap-2.5 text-ink rounded-sm ${INTERACTION.focus}`}
+        >
           <LogoMark />
-          <span className="font-display font-medium text-[19px] leading-[1.1] tracking-[-0.02em]">
-            Kiara&apos;s
-            <br />
-            Haven
+          <span className="font-display font-medium text-[22px] leading-[1.05] tracking-[-0.02em]">
+            Kiara&apos;s Haven
           </span>
         </Link>
 
-        <ul className="hidden lg:flex items-center gap-7 text-sm font-medium tracking-[-0.01em] text-ink">
+        <ul className="hidden lg:flex items-center gap-8 text-sm font-medium tracking-[-0.01em] text-ink">
           {NAV_LINKS.map((link) => (
             <li key={link.label}>
-              <Link href={link.href} className="hover:text-brand transition-colors">
+              {/* The underline draws itself outward from the left rather than
+                  appearing all at once — the one nav interaction in the set. */}
+              <Link
+                href={link.href}
+                className={`group relative py-2 hover:text-brand-dark transition-colors duration-fast rounded-sm ${INTERACTION.focus}`}
+              >
                 {link.label}
+                <span
+                  aria-hidden="true"
+                  className="absolute left-0 -bottom-0.5 h-px w-full origin-left scale-x-0 bg-brand transition-transform duration-standard group-hover:scale-x-100"
+                />
               </Link>
             </li>
           ))}
         </ul>
 
         <div className="hidden lg:block">
-          <Button href={actionHref("donate")} size="sm">
-            <Heart size={15} className="mr-2" /> Donate
+          <Button href={actionHref("join-our-family")} size="sm">
+            Join our family
+            <ArrowRight size={15} aria-hidden="true" className={INTERACTION.arrow} />
           </Button>
         </div>
 
         <button
-          className="lg:hidden text-ink"
+          className={`lg:hidden text-ink rounded-sm p-1 ${INTERACTION.focus}`}
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
         >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
-      </nav>
+      </Container>
 
       {open && (
-        <ul className="lg:hidden flex flex-col gap-1 px-6 pb-4 text-sm font-medium tracking-[-0.01em] text-ink">
+        <Container
+          as="ul"
+          className="lg:hidden flex flex-col gap-1 pb-6 text-sm font-medium tracking-[-0.01em] text-ink"
+        >
           {NAV_LINKS.map((link) => (
             <li key={link.label}>
               <Link
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="block py-2 hover:text-brand transition-colors"
+                className={`block py-3 hover:text-brand-dark transition-colors duration-fast rounded-sm ${INTERACTION.focus}`}
               >
                 {link.label}
               </Link>
             </li>
           ))}
-          <li className="pt-2">
-            <Button href={actionHref("donate")} size="sm" onClick={() => setOpen(false)}>
-              Donate
+          <li className="pt-3">
+            <Button
+              href={actionHref("join-our-family")}
+              size="sm"
+              onClick={() => setOpen(false)}
+            >
+              Join our family
+              <ArrowRight size={15} aria-hidden="true" />
             </Button>
           </li>
-        </ul>
+        </Container>
       )}
     </header>
   );
