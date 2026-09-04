@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 import { Send } from "lucide-react";
+
 import Button from "@/app/components/ui/Button";
+import Field, { CONTROL } from "@/app/components/ui/Field";
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -14,7 +16,7 @@ export default function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="rounded-2xl border border-line bg-surface p-8 text-center">
+      <div className="rounded-lg border border-line bg-surface p-8 md:p-10 text-center">
         <p className="font-display text-[22px] tracking-[-0.02em] mb-2">
           Thanks for reaching out!
         </p>
@@ -27,32 +29,34 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="grid sm:grid-cols-2 gap-4">
-        <input
-          type="text"
-          required
-          placeholder="Your name"
-          aria-label="Your name"
-          className="w-full rounded-lg border border-line bg-surface px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand"
-        />
-        <input
-          type="email"
-          required
-          placeholder="Email address"
-          aria-label="Email address"
-          className="w-full rounded-lg border border-line bg-surface px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand"
-        />
+    <form onSubmit={handleSubmit} className="space-y-5">
+      <div className="grid sm:grid-cols-2 gap-5">
+        <Field id="contact-name" label="Your name">
+          <input id="contact-name" type="text" required placeholder="Medha" className={`${CONTROL} h-13`} />
+        </Field>
+        <Field id="contact-email" label="Email address">
+          <input
+            id="contact-email"
+            type="email"
+            required
+            placeholder="you@example.com"
+            className={`${CONTROL} h-13`}
+          />
+        </Field>
       </div>
-      <textarea
-        rows={4}
-        required
-        placeholder="Your message"
-        aria-label="Your message"
-        className="w-full rounded-lg border border-line bg-surface px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand"
-      />
+
+      <Field id="contact-message" label="Your message">
+        <textarea
+          id="contact-message"
+          rows={4}
+          required
+          placeholder="Say hello…"
+          className={`${CONTROL} py-3.5`}
+        />
+      </Field>
+
       <Button type="submit" variant="primary">
-        Send message <Send size={16} className="ml-2" />
+        Send message <Send size={16} aria-hidden="true" />
       </Button>
     </form>
   );
