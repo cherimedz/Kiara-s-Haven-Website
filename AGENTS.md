@@ -99,6 +99,65 @@ it — `curl` a route and grep for `opacity:0`; there should be none.
 
 No bouncing, spinning, confetti, or fast parallax.
 
+## Components
+
+**The governing rule: functional components stay clean, emotional ones get
+personality.** Navigation, buttons, forms and information cards are quiet and
+consistent. Haven cards, story blocks, quotes and anything carrying an animal's
+identity are where the illustration and the warmth go. Mixing the two is what
+makes a site look like a template wearing a costume.
+
+**Layout** — `ui/Container` (the one 1280px shell, 16/20/32/48 padding) and
+`ui/Section` (vertical rhythm by emotional weight: hero, story, grid, stats,
+cta, compact; `flush` when a wave divider already provided the gap). Don't
+hand-roll `max-w-* mx-auto px-*` again.
+
+**Actions** — `ui/Button`, three styles only: `primary`, `secondary`, `text`.
+Haven-token variants are `primary` in a haven's colour. Pills, 48/52/56px tall,
+and the only round shapes in the system.
+
+**Typography** — `ui/Eyebrow` (the section label; pass `token` on a haven page
+and it takes that haven's colour), `ui/SectionHeading` (label → heading →
+description, **left-aligned by default** — centre is for genuine emotional
+moments, not for every section), `ui/QuoteBlock` (used sparingly; it stops being
+a moment if it happens three times).
+
+**Cards** — tiers live in `lib/layout.js` as `CARD.haven` / `CARD.action` /
+`CARD.small`. Haven cards lead with the illustration, then the name.
+
+**Information** — `ui/StatRow` puts figures in an editorial row with hairline
+rules. Do not put statistics in a bordered card; that is what makes a page read
+as a dashboard. `illustrations/CheckMark` is the checklist tick, drawn per haven
+— but only on haven pages. Actions get the plain drawn tick, because a crescent
+moon bulleting a line about veterinary bills is a haven mark on the wrong page.
+
+**Forms** — `ui/Field` plus its exported `CONTROL` class. Real visible labels,
+never floating ones: a floating label disappears exactly when the person is most
+likely to have forgotten what the field wanted.
+
+**Interaction** — one vocabulary, in `INTERACTION` in `lib/layout.js`, on three
+speeds declared as utilities in globals.css: `duration-fast` (180ms, controls),
+`duration-standard` (300ms, surfaces), `duration-art` (650ms, illustration).
+Links shift colour and slide their arrow; buttons darken and lift 1px; cards
+lift 4px and take an accent border; nav underlines draw themselves. Never write
+a raw `duration-300`.
+
+Tailwind v4 has no `--duration-*` theme namespace, which is why those three are
+`@utility` rules rather than theme tokens. Radii **do** have one, so
+`--radius-sm/md/lg/xl` override Tailwind's defaults: `rounded-xl` is 28px here,
+not 12px. Check the token before assuming a Tailwind default.
+
+**Two traps this codebase has already hit:**
+
+*Grid items default to `min-width: auto`.* A horizontally-scrolling row inside a
+grid column will widen the column instead of scrolling, and an ancestor's
+`overflow-hidden` then silently eats the overflow. `min-w-0` on the column is
+what makes the scroll real — see `OurStory`.
+
+*An SVG box whose ratio doesn't match its viewBox* scales the artwork to one
+axis and anchors it, stranding filled shapes' straight edges mid-card. Match the
+ratio (`aspect-[16/11]` for `HavenMotif`) or fade the edge with a mask.
+
 ## Two rules worth stating
 
 **Tailwind classes must be literal.** `text-${token}-deep` compiles to nothing —
