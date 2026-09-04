@@ -1,8 +1,12 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 import Eyebrow from "@/app/components/ui/Eyebrow";
 import HavenMotif from "@/app/components/illustrations/HavenMotif";
 import { HAVENS } from "@/app/lib/havens";
+import Container from "@/app/components/ui/Container";
+import Section from "@/app/components/ui/Section";
+import { CARD, INTERACTION } from "@/app/lib/layout";
 import { getPalette } from "@/app/lib/palette";
 
 /**
@@ -16,13 +20,13 @@ export default function HavenSiblings({ haven }) {
   const siblings = HAVENS.filter((candidate) => candidate.slug !== haven.slug);
 
   return (
-    <section className="px-6 pb-16">
-      <div className="max-w-4xl mx-auto">
-        <Eyebrow as="h2" className="text-center mb-8">
+    <Section rhythm="compact">
+      <Container>
+        <Eyebrow as="h2" token={haven.token} className="mb-10">
           The other havens
         </Eyebrow>
 
-        <ul className="grid sm:grid-cols-3 gap-4 list-none">
+        <ul className="grid sm:grid-cols-3 gap-4 md:gap-5 lg:gap-6 list-none">
           {siblings.map((sibling) => {
             const palette = getPalette(sibling.token);
 
@@ -30,11 +34,11 @@ export default function HavenSiblings({ haven }) {
               <li key={sibling.slug} className="flex">
                 <Link
                   href={`/${sibling.slug}`}
-                  className={`group relative overflow-hidden w-full rounded-2xl border p-5 min-h-[150px] flex flex-col transition-transform duration-300 hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand ${palette.card} ${palette.border} ${palette.ink}`}
+                  className={`relative overflow-hidden w-full border min-h-[180px] flex flex-col hover:shadow-lift ${CARD.action.shape} ${INTERACTION.card} ${INTERACTION.focus} ${palette.card} ${palette.border} ${palette.ink}`}
                 >
                   <HavenMotif
                     haven={sibling.token}
-                    className="pointer-events-none absolute right-0 bottom-0 w-[70%] h-[48%] opacity-30"
+                    className={`pointer-events-none absolute right-0 bottom-0 w-[64%] aspect-[16/11] opacity-30 [mask-image:linear-gradient(to_right,transparent,#000_45%)] [-webkit-mask-image:linear-gradient(to_right,transparent,#000_45%)]`}
                   />
                   <p className="relative font-semibold text-[10px] uppercase tracking-[0.16em] opacity-80 mb-1.5">
                     {sibling.focus}
@@ -42,18 +46,16 @@ export default function HavenSiblings({ haven }) {
                   <h3 className="relative font-display font-medium text-[19px] leading-[1.1] tracking-[-0.02em]">
                     {sibling.name}
                   </h3>
-                  <span className="relative mt-auto text-sm font-semibold">
-                    Explore{" "}
-                    <span className="inline-block transition-transform group-hover:translate-x-1">
-                      →
-                    </span>
+                  <span className="relative mt-auto pt-5 inline-flex items-center gap-2 text-sm font-semibold">
+                    Explore
+                    <ArrowRight size={16} aria-hidden="true" className={INTERACTION.arrow} />
                   </span>
                 </Link>
               </li>
             );
           })}
         </ul>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

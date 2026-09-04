@@ -1,4 +1,4 @@
-import { ArrowLeft, CheckCircle2 } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 import Navbar from "@/app/components/layout/Navbar";
 import Footer from "@/app/components/layout/Footer";
@@ -10,7 +10,11 @@ import HavenDedication from "@/app/components/haven/HavenDedication";
 import HavenHelp from "@/app/components/haven/HavenHelp";
 import HavenSiblings from "@/app/components/haven/HavenSiblings";
 import Botanical from "@/app/components/illustrations/Botanical";
+import CheckMark from "@/app/components/illustrations/CheckMark";
 import Reveal from "@/app/components/ui/Reveal";
+import Container from "@/app/components/ui/Container";
+import Section from "@/app/components/ui/Section";
+import { HEADING_RHYTHM, MEASURE } from "@/app/lib/layout";
 import WaveDivider from "@/app/components/illustrations/WaveDivider";
 import { getPalette } from "@/app/lib/palette";
 
@@ -37,7 +41,7 @@ export default function HavenPage({ haven }) {
         {/* Hero surface → the surface-level mission section. */}
         <WaveDivider fill="var(--kh-surface)" />
 
-        <section className="relative overflow-hidden bg-surface paper-grain px-6 pt-4 pb-16">
+        <Section rhythm="story" flush className="relative overflow-hidden bg-surface paper-grain">
           {/* Enters from the right edge and is cropped by it — the garden is
               meant to continue past the viewport rather than sit inside it. */}
           <Botanical
@@ -45,30 +49,36 @@ export default function HavenPage({ haven }) {
             className="decor -right-8 top-8 hidden lg:block w-24 opacity-25"
           />
 
-          <Reveal className="max-w-3xl mx-auto">
-            <Eyebrow className="mb-4">Our mission</Eyebrow>
-            <p className="text-[18px] leading-[1.75] text-mute mb-10">{haven.mission}</p>
+          <Container>
+            <Reveal className={MEASURE.wide}>
+              <Eyebrow token={haven.token} className={HEADING_RHYTHM.label}>
+                Our mission
+              </Eyebrow>
+              <p className="text-[18px] leading-[1.75] text-mute mb-12 md:mb-16">
+                {haven.mission}
+              </p>
 
-            <h2 className="font-display font-medium text-ink text-[26px] leading-[1.1] tracking-[-0.025em] mb-4">
-              What we focus on
-            </h2>
-            <ul className="space-y-3 list-none">
-              {haven.focusAreas.map((area) => (
-                <li
-                  key={area}
-                  className="flex items-start gap-3 text-[17px] leading-[1.65] text-mute"
-                >
-                  <CheckCircle2
-                    size={20}
-                    aria-hidden="true"
-                    className={`${palette.accent} shrink-0 mt-0.5`}
-                  />
-                  {area}
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-        </section>
+              {/* Still a heading in the outline — it only looks like a label. */}
+              <Eyebrow as="h2" token={haven.token} className="mb-4">
+                What we focus on
+              </Eyebrow>
+              <ul className="space-y-4 list-none">
+                {haven.focusAreas.map((area) => (
+                  <li
+                    key={area}
+                    className="flex items-start gap-3 text-[17px] leading-[1.65] text-mute"
+                  >
+                    <CheckMark
+                      token={haven.token}
+                      className={`${palette.accent} shrink-0 mt-0.5`}
+                    />
+                    {area}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </Container>
+        </Section>
 
         {/* Surface → back to the page ground. */}
         <WaveDivider fill="var(--kh-page)" />
@@ -86,7 +96,7 @@ export default function HavenPage({ haven }) {
           <HavenSiblings haven={haven} />
         </Reveal>
 
-        <section className="relative overflow-hidden px-6 pb-20">
+        <Section rhythm="cta" className="relative overflow-hidden">
           {/* Margin ornaments, in this haven's own vegetation rather than a
               fixed one — the closing line is the last thing read, so it should
               still be recognisably this haven. */}
@@ -100,13 +110,13 @@ export default function HavenPage({ haven }) {
             className="decor -right-7 bottom-0 w-20 md:w-24 opacity-25"
           />
 
-          <Reveal className="relative max-w-2xl mx-auto text-center">
-            <p className="font-display italic text-[19px] leading-[1.55] text-mute mb-7">
+          <Reveal className={`relative mx-auto text-center ${MEASURE.base}`}>
+            <p className="font-display italic text-[19px] leading-[1.55] text-mute mb-10">
               Every haven here started with one animal who mattered to us.
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Button href="/" variant="ghost">
-                <ArrowLeft size={16} aria-hidden="true" className="mr-2" />
+            <div className="flex flex-wrap gap-3 justify-center">
+              <Button href="/" variant="secondary">
+                <ArrowLeft size={16} aria-hidden="true" />
                 Back to Kiara&apos;s Haven
               </Button>
               <Button href="/#contact" variant={haven.token}>
@@ -114,7 +124,7 @@ export default function HavenPage({ haven }) {
               </Button>
             </div>
           </Reveal>
-        </section>
+        </Section>
       </main>
 
       <Footer />

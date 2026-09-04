@@ -5,6 +5,9 @@ import Eyebrow from "@/app/components/ui/Eyebrow";
 import LeafDivider from "@/app/components/illustrations/LeafDivider";
 import * as ActionIcons from "@/app/components/illustrations/ActionIcons";
 import { actionHref, getAction } from "@/app/lib/actions";
+import Container from "@/app/components/ui/Container";
+import Section from "@/app/components/ui/Section";
+import { CARD, INTERACTION } from "@/app/lib/layout";
 import { getPalette } from "@/app/lib/palette";
 
 /**
@@ -19,16 +22,17 @@ export default function HavenHelp({ haven }) {
   if (actions.length === 0) return null;
 
   return (
-    <section className="px-6 py-16">
-      <div className="max-w-4xl mx-auto">
-        <div className="flex justify-center mb-3 text-simba-secondary">
+    <Section rhythm="grid">
+      <Container>
+        {/* The ornament follows the heading's alignment, not the page's centre. */}
+        <div className="flex mb-3 text-simba-secondary">
           <LeafDivider />
         </div>
-        <Eyebrow as="h2" className="text-center mb-10">
+        <Eyebrow as="h2" token={haven.token} className="mb-10 md:mb-14">
           How you can help here
         </Eyebrow>
 
-        <ul className="grid sm:grid-cols-3 gap-4 list-none">
+        <ul className="grid sm:grid-cols-3 gap-4 md:gap-5 lg:gap-6 list-none">
           {actions.map(({ id, label, summary, icon, token }) => {
             const Icon = ActionIcons[icon];
             const palette = getPalette(token);
@@ -37,7 +41,7 @@ export default function HavenHelp({ haven }) {
               <li key={id} className="flex">
                 <Link
                   href={actionHref(id)}
-                  className={`group w-full rounded-2xl border p-6 flex flex-col transition-transform duration-300 hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand ${palette.tint} ${palette.border}`}
+                  className={`w-full border flex flex-col hover:shadow-lift ${CARD.action.shape} ${INTERACTION.card} ${INTERACTION.focus} ${palette.tint} ${palette.border}`}
                 >
                   <Icon aria-hidden="true" className={`${palette.accent} mb-4`} />
                   <h3 className="font-display font-medium text-ink text-[20px] leading-[1.1] tracking-[-0.02em] mb-2">
@@ -46,18 +50,14 @@ export default function HavenHelp({ haven }) {
                   <p className="text-[14px] leading-[1.6] text-warm mb-5 flex-1">{summary}</p>
                   <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-warm">
                     Read more
-                    <ArrowRight
-                      size={15}
-                      aria-hidden="true"
-                      className="transition-transform group-hover:translate-x-1"
-                    />
+                    <ArrowRight size={15} aria-hidden="true" className={INTERACTION.arrow} />
                   </span>
                 </Link>
               </li>
             );
           })}
         </ul>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }
