@@ -1,10 +1,14 @@
-import { CheckCircle2 } from "lucide-react";
+import CheckMark from "@/app/components/illustrations/CheckMark";
 
 import Navbar from "@/app/components/layout/Navbar";
 import Footer from "@/app/components/layout/Footer";
 import Button from "@/app/components/ui/Button";
 import Eyebrow from "@/app/components/ui/Eyebrow";
+import Container from "@/app/components/ui/Container";
+import Section from "@/app/components/ui/Section";
+import { CARD, HEADING_RHYTHM, MEASURE } from "@/app/lib/layout";
 import LeafDivider from "@/app/components/illustrations/LeafDivider";
+import ChapterNav from "@/app/components/sections/ChapterNav";
 import * as ActionIcons from "@/app/components/illustrations/ActionIcons";
 import { ACTIONS } from "@/app/lib/actions";
 import { getPalette } from "@/app/lib/palette";
@@ -22,24 +26,26 @@ export default function GetInvolvedPage() {
       <Navbar />
 
       <main>
-        <section className="px-6 pt-14 pb-10 md:pt-20">
-          <div className="max-w-3xl mx-auto text-center">
-            <Eyebrow className="mb-4">Get involved</Eyebrow>
-            <h1 className="font-display font-normal text-ink text-[clamp(2.5rem,4.5vw,3.5rem)] leading-[1.04] tracking-[-0.035em] mb-5">
+        <Section rhythm="hero" className="pb-10 md:pb-12">
+          <Container className={`text-center ${MEASURE.wide}`}>
+            <Eyebrow className={HEADING_RHYTHM.label}>Get involved</Eyebrow>
+            <h1 className={`font-display font-normal text-ink text-[clamp(2.5rem,4.5vw,3.5rem)] leading-[1.04] tracking-[-0.035em] ${HEADING_RHYTHM.heading}`}>
               Six ways to help.
             </h1>
             <p className="text-[18px] leading-[1.75] text-mute">
               Not everyone can adopt, and not everyone can give. There is more
               than one way to be useful to an animal who needs one.
             </p>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
-        <div className="flex justify-center text-simba-secondary">
+        <div className="flex justify-center text-simba-secondary pb-10">
           <LeafDivider />
         </div>
 
-        <div className="max-w-4xl mx-auto px-6 py-12 space-y-5">
+        <ChapterNav />
+
+        <Container className="py-16 md:py-24 space-y-5 md:space-y-6">
           {ACTIONS.map(({ id, label, summary, detail, points, icon, token }) => {
             const Icon = ActionIcons[icon];
             const palette = getPalette(token);
@@ -49,17 +55,19 @@ export default function GetInvolvedPage() {
               <section
                 key={id}
                 id={id}
-                className={`scroll-mt-24 rounded-2xl border p-8 md:p-10 ${palette.tint} ${palette.border}`}
+                className={`scroll-mt-40 border ${CARD.haven.shape} ${palette.tint} ${palette.border}`}
               >
-                <Icon aria-hidden="true" className={`${palette.accent} mb-4`} />
+                <Icon aria-hidden="true" className={`${palette.accent} mb-5`} />
 
-                <h2 className="font-display font-medium text-ink text-[28px] leading-[1.1] tracking-[-0.025em] mb-2">
+                <h2 className="font-display font-medium text-ink text-[28px] leading-[1.1] tracking-[-0.025em] mb-3">
                   {label}
                 </h2>
                 <p className="font-display italic text-[18px] leading-[1.5] text-warm mb-5">
                   {summary}
                 </p>
-                <p className="text-[17px] leading-[1.75] text-warm mb-6">{detail}</p>
+                <p className={`text-[17px] leading-[1.75] text-warm mb-8 ${MEASURE.wide}`}>
+                  {detail}
+                </p>
 
                 <ul className="space-y-2.5 list-none">
                   {points.map((point) => (
@@ -67,11 +75,11 @@ export default function GetInvolvedPage() {
                       key={point}
                       className="flex items-start gap-3 text-[16px] leading-[1.6] text-warm"
                     >
-                      <CheckCircle2
-                        size={19}
-                        aria-hidden="true"
-                        className={`${palette.accent} shrink-0 mt-0.5`}
-                      />
+                      {/* The plain drawn tick, not a haven symbol. These are
+                          actions, not havens — a crescent moon bulleting a line
+                          about veterinary bills only reads as a haven mark that
+                          wandered onto the wrong page. */}
+                      <CheckMark className={`${palette.accent} shrink-0 mt-0.5`} />
                       {point}
                     </li>
                   ))}
@@ -79,17 +87,17 @@ export default function GetInvolvedPage() {
               </section>
             );
           })}
-        </div>
+        </Container>
 
-        <section className="px-6 pb-20">
-          <div className="max-w-3xl mx-auto text-center">
-            <p className="text-[17px] leading-[1.7] text-mute mb-6">
+        <Section rhythm="cta" className="pt-0">
+          <Container className={`text-center ${MEASURE.base}`}>
+            <p className="text-[17px] leading-[1.7] text-mute mb-10">
               Kiara&apos;s Haven is a demo concept, so nothing here collects real
               money or real sign-ups — but this is where each of these would begin.
             </p>
             <Button href="/#contact">Get in touch</Button>
-          </div>
-        </section>
+          </Container>
+        </Section>
       </main>
 
       <Footer />
