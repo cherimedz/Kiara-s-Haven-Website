@@ -8,6 +8,7 @@ import PromiseStrip from "@/app/components/sections/PromiseStrip";
 import ContactSection from "@/app/components/sections/ContactSection";
 import WaveDivider from "@/app/components/illustrations/WaveDivider";
 import Reveal from "@/app/components/ui/Reveal";
+import QuoteBlock from "@/app/components/ui/QuoteBlock";
 
 export default function HomePage() {
   return (
@@ -24,7 +25,17 @@ export default function HomePage() {
         <Reveal>
           <OurStory />
         </Reveal>
-        {/* Transitions back from the surface-level story section to the page. */}
+        {/* One breathing moment between the personal story and the havens it
+            turned into. Used once on the page; it stops being a moment if it
+            happens three times. */}
+        <Reveal>
+          <QuoteBlock pet="kiara">
+            Every animal deserves more than a home. They deserve to be
+            remembered.
+          </QuoteBlock>
+        </Reveal>
+
+        {/* Transitions back from the linen quote to the page ground. */}
         <WaveDivider fill="var(--kh-page)" />
         <Reveal>
           <HavenSpread />

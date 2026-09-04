@@ -9,7 +9,7 @@ export const metadata = buildMetadata({
 
 export default function NotFound() {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center px-6 text-center bg-page text-ink">
+    <main className="min-h-screen flex flex-col items-center justify-center px-4 min-[420px]:px-5 md:px-8 lg:px-12 text-center bg-page text-ink">
       <h1 className="font-display font-normal text-[clamp(2.25rem,4vw,3rem)] leading-[1.05] tracking-[-0.03em] mb-4">
         Lost, but not forgotten
       </h1>
