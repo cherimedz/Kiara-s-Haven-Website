@@ -1,4 +1,10 @@
-/* Scene illustrations anchored to the lower-right of each haven card. */
+/* Scene illustrations for each haven card.
+ *
+ * The named groups (`motif-leaves`, `motif-moon`, `motif-links`, `motif-stars`)
+ * exist so a haven card can move its own illustration on hover — leaves shift,
+ * the moon drifts, the links open out, the stars come up. The movement lives in
+ * globals.css rather than here, because it belongs to the interaction system
+ * and not to the drawing. */
 
 const s = {
   fill: "none",
@@ -18,7 +24,7 @@ function SimbaScene() {
         opacity="0.18"
       />
       <path d="M0 78 C26 54 48 58 70 76 C88 90 104 88 120 72 C134 58 148 60 160 74" {...s} opacity="0.55" />
-      <g {...s}>
+      <g {...s} className="motif-leaves">
         <path d="M126 110 V74" />
         <path d="M126 92 c-13 -2 -20 -10 -22 -23 c13 0 20 9 22 23Z" />
         <path d="M128 84 c2 -12 10 -20 23 -22 c0 13 -9 21 -23 22Z" />
@@ -33,6 +39,11 @@ function SimbaScene() {
 function SebastianScene() {
   return (
     <g {...s}>
+      <path
+        className="motif-moon"
+        d="M44 30 A11 11 0 1 1 34.5 15 A8.8 8.8 0 0 0 44 30Z"
+        opacity="0.45"
+      />
       <rect x="14" y="10" width="40" height="50" rx="2" />
       <path d="M34 10 v50 M14 35 h40" opacity="0.55" />
       <path d="M10 63 h48" />
@@ -52,7 +63,7 @@ function SebastianScene() {
 /* Coco — two hands reaching toward one another */
 function CocoScene() {
   return (
-    <g {...s}>
+    <g {...s} className="motif-links">
       <path d="M30 106 C22 90 30 74 46 70 C54 68 60 72 62 79" />
       <path d="M130 106 C138 90 130 74 114 70 C106 68 100 72 98 79" />
       <path d="M46 70 c-5 -7 -1 -15 7 -15 c6 0 9 5 10 10" />
@@ -73,7 +84,7 @@ function PrincessScene() {
       <path d="M76 70 L96 46" />
       <path d="M64 96 v13 M78 96 v13" />
       <path d="M108 22 l3.6 8 8.4 0.8 -6.4 5.6 1.9 8.4 -7.5 -4.6 -7.5 4.6 1.9 -8.4 -6.4 -5.6 8.4 -0.8Z" />
-      <g opacity="0.6">
+      <g className="motif-stars" opacity="0.45">
         <path d="M138 62 l1.6 3.6 3.6 0.4 -2.8 2.4 0.8 3.6 -3.2 -2 -3.2 2 0.8 -3.6 -2.8 -2.4 3.6 -0.4Z" />
         <path d="M36 40 l1.6 3.6 3.6 0.4 -2.8 2.4 0.8 3.6 -3.2 -2 -3.2 2 0.8 -3.6 -2.8 -2.4 3.6 -0.4Z" />
         <path d="M146 26 l1.2 2.8 2.8 0.3 -2.2 1.9 0.6 2.8 -2.4 -1.5 -2.4 1.5 0.6 -2.8 -2.2 -1.9 2.8 -0.3Z" />
